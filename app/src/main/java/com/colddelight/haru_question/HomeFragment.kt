@@ -36,11 +36,13 @@ class HomeFragment : Fragment() {
         binding.btnToWorry.setOnClickListener {
             findNavController().navigate(R.id.action_homeFragment_to_haruWorryFragment)
         }
+        binding.btnToWrite.setOnClickListener {
+            findNavController().navigate(R.id.action_homeFragment_to_writeBottomSheetFragment)
 
+        }
         //드로어
         binding.btnDrawer.setOnClickListener {
             binding.dlHome.openDrawer(GravityCompat.START)
-//            findNavController().navigate(R.id.action_homeFragment_to_haruWorryFragment)
         }
     }
 

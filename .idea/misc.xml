@@ -11,10 +11,13 @@
         <entry key="..\:/myWorld/Android/Haru_question/app/src/main/res/layout/activity_main.xml" value="0.5046875" />
         <entry key="..\:/myWorld/Android/Haru_question/app/src/main/res/layout/fragment_food.xml" value="0.5046875" />
         <entry key="..\:/myWorld/Android/Haru_question/app/src/main/res/layout/fragment_haru_list.xml" value="0.33" />
-        <entry key="..\:/myWorld/Android/Haru_question/app/src/main/res/layout/fragment_haru_worry.xml" value="0.5610885929357267" />
+        <entry key="..\:/myWorld/Android/Haru_question/app/src/main/res/layout/fragment_haru_worry.xml" value="0.33" />
         <entry key="..\:/myWorld/Android/Haru_question/app/src/main/res/layout/fragment_home.xml" value="0.5" />
         <entry key="..\:/myWorld/Android/Haru_question/app/src/main/res/layout/fragment_splash.xml" value="0.5" />
         <entry key="..\:/myWorld/Android/Haru_question/app/src/main/res/layout/fragment_test.xml" value="0.5046875" />
+        <entry key="..\:/myWorld/Android/Haru_question/app/src/main/res/layout/fragment_write_bottom_sheet.xml" value="0.5046875" />
+        <entry key="..\:/myWorld/Android/Haru_question/app/src/main/res/layout/fragment_write_dialog_list_dialog.xml" value="0.5046875" />
+        <entry key="..\:/myWorld/Android/Haru_question/app/src/main/res/layout/fragment_write_dialog_list_dialog_item.xml" value="0.5046875" />
         <entry key="..\:/myWorld/Android/Haru_question/app/src/main/res/layout/navi_header.xml" value="0.5046875" />
         <entry key="..\:/myWorld/Android/Haru_question/app/src/main/res/menu/navi_menu.xml" value="0.5036458333333333" />
       </map>
