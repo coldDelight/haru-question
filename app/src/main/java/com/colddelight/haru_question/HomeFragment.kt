@@ -33,6 +33,8 @@ class HomeFragment : Fragment() {
         val model: HomeViewModel by viewModels()
         val state = model.state
 
+        binding.lottieHome.playAnimation()
+
         binding.btnToWrite.setOnClickListener {
 //            findNavController().navigate(R.id.action_home)
         }

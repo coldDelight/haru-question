@@ -26,7 +26,6 @@ class HomeViewModel @Inject constructor(
     private val _state = mutableStateOf(QuestionState())
     val state:State<QuestionState> = _state
 
-
     init{
         viewModelScope.launch(Dispatchers.IO) {
 //            UseCase.delQuestion(2)

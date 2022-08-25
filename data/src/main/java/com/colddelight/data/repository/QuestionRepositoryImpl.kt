@@ -20,7 +20,7 @@ class QuestionRepositoryImpl(
     }
 
     override suspend fun addQuestion(question: DomainQuestion) {
-        val teset = QuestionEntity("number2 q","number2 qqqq","number2 aaa")
+        val teset = QuestionEntity(question.question,question.quote,question.quoteAuthor)
         dao.insetQuestion(teset)
     }
     override suspend fun delQuestion(id:Int) {

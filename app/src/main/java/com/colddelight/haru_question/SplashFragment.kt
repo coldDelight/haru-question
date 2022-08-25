@@ -21,6 +21,6 @@ class SplashFragment : Fragment() {
         super.onResume()
         view?.postDelayed({
             findNavController().navigate(R.id.action_splashFragment_to_homeFragment)
-        },2_000)
+        },1_000)
     }
 }
