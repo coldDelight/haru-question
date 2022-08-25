@@ -4,6 +4,7 @@
     package="com.colddelight.haru_question">
 
     <application
+        android:name=".HaruQuestionApp"
         android:allowBackup="true"
         android:dataExtractionRules="@xml/data_extraction_rules"
         android:fullBackupContent="@xml/backup_rules"
