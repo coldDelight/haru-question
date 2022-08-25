@@ -6,16 +6,16 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.colddelight.domain.model.DomainQuestion
-import com.colddelight.domain.use_case.AddQuestion
-import com.colddelight.domain.use_case.GetQuestion
+import com.colddelight.domain.use_case.QuestionUseCase
 import dagger.hilt.android.lifecycle.HiltViewModel
+import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 
 @HiltViewModel
 class HomeViewModel @Inject constructor(
-    private val getQuestion: GetQuestion,private val addQuestion : AddQuestion
+    private val UseCase: QuestionUseCase
 ):ViewModel(){
     data class QuestionState(
         val questionData:DomainQuestion = DomainQuestion("","","",-1),
@@ -28,11 +28,10 @@ class HomeViewModel @Inject constructor(
 
 
     init{
-        viewModelScope.launch {
-//            addQuestion.invoke(DomainQuestion("","","",-1))
-            Log.e("333", "33: check", )
-
-            val tes = getQuestion.invoke(2)
+        viewModelScope.launch(Dispatchers.IO) {
+//            UseCase.delQuestion(2)
+            val tes = UseCase.getAllQuestion()
+//            val tes = getQuestion.invoke(2)
             Log.e("tes", "tes: $tes", )
         }
     }
