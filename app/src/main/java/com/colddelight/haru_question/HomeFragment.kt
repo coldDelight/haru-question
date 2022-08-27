@@ -1,6 +1,7 @@
 package com.colddelight.haru_question
 
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -8,15 +9,20 @@ import android.view.ViewGroup
 import androidx.activity.viewModels
 import androidx.core.view.GravityCompat
 import androidx.fragment.app.viewModels
+import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
+import com.colddelight.haru_question.core.util.HaruState
 import com.colddelight.haru_question.databinding.FragmentHomeBinding
 import com.colddelight.haru_question.feat_home.presentation.viewmodel.HomeViewModel
 import dagger.hilt.android.AndroidEntryPoint
+import kotlinx.coroutines.flow.collectLatest
 
 @AndroidEntryPoint
 class HomeFragment : Fragment() {
     private var _binding: FragmentHomeBinding? = null
     private val binding get() = _binding!!
+    private val model: HomeViewModel by viewModels()
+
 
 
     override fun onCreateView(
@@ -30,15 +36,42 @@ class HomeFragment : Fragment() {
     //onCreateView should only by used for view inflation. Any logic that operates on the Fragment's view should be written in onViewCreated
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        val model: HomeViewModel by viewModels()
         val state = model.state
 
+        //버튼 onClick
+        setUpButton()
+
+        //로티 play
         binding.lottieHome.playAnimation()
+        lifecycleScope.launchWhenStarted {
+            model.state.collectLatest {
+                when(it.state){
+                    HaruState.READY->{
+                        binding.tvHomeTitle.text = "망원경을 눌러봐라"
+                        binding.lottieHome.setOnClickListener {
+                            model.checkQuestion()
+                        }
+                    }
+                    HaruState.SHOW ->{
+                        binding.tvHomeTitle.text= it.questionData.question
+                        binding.lottieHome.setOnClickListener {
 
-        binding.btnToWrite.setOnClickListener {
-//            findNavController().navigate(R.id.action_home)
+                        }
+                        binding.lottieHome.setAnimation(R.raw.home_second)
+                        binding.lottieHome.playAnimation()
+
+                    }
+                    HaruState.WAIT->{
+                        binding.tvHomeTitle.text = "내일을 기다리자"
+                        binding.lottieHome.setAnimation(R.raw.home_third)
+                        binding.lottieHome.playAnimation()
+                    }
+                }
+            }
         }
+    }
 
+    private fun setUpButton(){
         binding.btnToList.setOnClickListener {
             findNavController().navigate(R.id.action_homeFragment_to_haruListFragment)
         }
@@ -54,8 +87,6 @@ class HomeFragment : Fragment() {
             binding.dlHome.openDrawer(GravityCompat.START)
         }
     }
-
-
 
     override fun onDestroyView() {
         super.onDestroyView()

@@ -1,7 +1,7 @@
 package com.colddelight.data.repository
 
 import android.util.Log
-import com.colddelight.data.local.QuestionDao
+import com.colddelight.data.local.dao.QuestionDao
 import com.colddelight.data.local.entity.QuestionEntity
 import com.colddelight.domain.model.DomainQuestion
 import com.colddelight.domain.repository.QuestionRepository

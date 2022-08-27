@@ -1,4 +1,4 @@
-package com.colddelight.data.local
+package com.colddelight.data.local.dao
 
 import androidx.room.Dao
 import androidx.room.Insert
