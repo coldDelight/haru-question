@@ -36,12 +36,9 @@ class HomeViewModel @Inject constructor(
         viewModelScope.launch(Dispatchers.IO) {
 //            UseCase.addQuestion(DomainQuestion("오늘의 점심을 기대합니까??","밥은 그대로 옳다","김찬희",-1))
 //            UseCase.addQuestion(DomainQuestion("내일은 무서운일이 기다리고 있습니까?","두려움을 용기로 바꾸어 사용해라","kim chenc",-1))
-//
 ////            UseCase.delQuestion(2)
             val tes = UseCase.getAllQuestion()
-            Log.e("tes", "tes: $tes", )
-//            Log.e("dd", "date: ${HaruQuestionApp.prefs.lastDate}", )
-//            Log.e("dd", "date: ${HaruQuestionApp.prefs.questionId}", )
+            Log.e("viewModelInit", "viewModelInit: $tes", )
 //            Log.e("dd", "date: ${HaruQuestionApp.prefs.isChecked}", )
         }
     }
@@ -68,7 +65,7 @@ class HomeViewModel @Inject constructor(
         setQuestion()
     }
 
-    fun setQuestion(){
+    private fun setQuestion(){
         val questionId= HaruQuestionApp.prefs.questionId
         viewModelScope.launch(Dispatchers.IO) {
             _state.value = QuestionState(

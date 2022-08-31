@@ -12,7 +12,7 @@ class QuestionUseCase(
         return repository.getQuestion(id)
     }
     suspend fun addQuestion(question: DomainQuestion){
-        return repository.addQuestion(question)
+        repository.addQuestion(question)
     }
     suspend fun delQuestion(id: Int){
         return repository.delQuestion(id)

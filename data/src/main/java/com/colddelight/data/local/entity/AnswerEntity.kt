@@ -8,7 +8,7 @@ import com.colddelight.domain.model.DomainAnswer
 data class AnswerEntity(
     val answer : String,
     val date : String,
-    @PrimaryKey(autoGenerate = true) val id: Int
+    @PrimaryKey(autoGenerate = true) val id: Int=0
 ){
     fun toDomainAnswer(): DomainAnswer {
         return DomainAnswer(

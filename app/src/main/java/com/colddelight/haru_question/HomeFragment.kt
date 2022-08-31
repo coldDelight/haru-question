@@ -1,12 +1,10 @@
 package com.colddelight.haru_question
 
 import android.os.Bundle
-import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.activity.viewModels
 import androidx.core.view.GravityCompat
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
@@ -23,8 +21,6 @@ class HomeFragment : Fragment() {
     private val binding get() = _binding!!
     private val model: HomeViewModel by viewModels()
 
-
-
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -36,11 +32,8 @@ class HomeFragment : Fragment() {
     //onCreateView should only by used for view inflation. Any logic that operates on the Fragment's view should be written in onViewCreated
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        val state = model.state
-
         //버튼 onClick
         setUpButton()
-
         //로티 play
         binding.lottieHome.playAnimation()
         lifecycleScope.launchWhenStarted {
@@ -79,7 +72,12 @@ class HomeFragment : Fragment() {
             findNavController().navigate(R.id.action_homeFragment_to_haruWorryFragment)
         }
         binding.btnToWrite.setOnClickListener {
-            findNavController().navigate(R.id.action_homeFragment_to_writeBottomSheetFragment)
+            val quote = model.state.value.questionData.quote
+            val question = model.state.value.questionData.question
+            val author = model.state.value.questionData.quoteAuthor
+            val questionId = model.state.value.questionData.id
+            val action =HomeFragmentDirections.actionHomeFragmentToWriteBottomSheetFragment(quote,question,questionId,author)
+            findNavController().navigate(action)
 
         }
         //드로어

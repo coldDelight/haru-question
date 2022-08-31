@@ -14,6 +14,7 @@ class HaruQuestionApp:Application() {
         //TODO 테스트용 지우기
         prefs.isChecked=false
         prefs.questionId=3
+        prefs.lastDate="NO_DATE"
         super.onCreate()
     }
 }
