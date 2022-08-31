@@ -11,6 +11,7 @@ class HaruQuestionApp:Application() {
     }
     override fun onCreate() {
         prefs=Prefs(applicationContext)
+        //TODO 테스트용 지우기
         prefs.isChecked=false
         prefs.questionId=3
         super.onCreate()
