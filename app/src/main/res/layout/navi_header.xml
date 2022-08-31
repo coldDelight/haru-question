@@ -4,6 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/indigo_700"
+    android:backgroundTint="@color/indigo_700"
     android:orientation="vertical">
 
     <ImageView

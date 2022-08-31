@@ -13,6 +13,8 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_gravity="start"
+            android:background="@color/indigo_700"
+            android:backgroundTint="@color/indigo_700"
             android:fitsSystemWindows="true"
             app:headerLayout="@layout/navi_header"
             app:itemTextColor="@color/gold_100"
@@ -21,6 +23,8 @@
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+            android:background="@color/indigo_700"
+            android:backgroundTint="@color/indigo_700"
             tools:context=".HomeFragment">
 
             <ImageButton
@@ -167,8 +171,6 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/view5"
                 app:lottie_rawRes="@raw/home_first" />
-
-
 
 
         </androidx.constraintlayout.widget.ConstraintLayout>
