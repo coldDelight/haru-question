@@ -24,6 +24,8 @@ class HaruWorryFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        binding.lottieWorry.playAnimation()
+
         binding.btnWorryBack.setOnClickListener {
             findNavController().popBackStack()
         }
