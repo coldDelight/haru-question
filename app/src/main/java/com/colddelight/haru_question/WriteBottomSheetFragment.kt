@@ -67,6 +67,7 @@ class WriteBottomSheetFragment : BottomSheetDialogFragment() {
                     }else{
                         tvWriteCnt.text = totText.length.toString()
                     }
+                    binding.btnWrite.isEnabled = totText.isNotEmpty()
                 }
                 override fun afterTextChanged(p0: Editable?) {
                 }

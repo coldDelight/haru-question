@@ -15,6 +15,8 @@ import com.colddelight.haru_question.databinding.FragmentHomeBinding
 import com.colddelight.haru_question.feat_home.presentation.viewmodel.HomeViewModel
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.flow.collectLatest
+import java.time.LocalDate
+import java.time.format.DateTimeFormatter
 
 @AndroidEntryPoint
 class HomeFragment : Fragment() {
@@ -27,6 +29,10 @@ class HomeFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View {
         _binding = FragmentHomeBinding.inflate(inflater, container, false)
+        val formatter = DateTimeFormatter.ofPattern("yyyy.MM.dd")
+        val dateNow = LocalDate.now().format(formatter)
+        binding.tvHomeDate.text = dateNow
+
         return binding.root
     }
 
@@ -46,6 +52,8 @@ class HomeFragment : Fragment() {
                         }
                     }
                     HaruState.SHOW ->{
+
+                        binding.btnToWrite.isEnabled=true
                         binding.tvHomeTitle.text= it.questionData.question
                         binding.lottieHome.setOnClickListener {
 
