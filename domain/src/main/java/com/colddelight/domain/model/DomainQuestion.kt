@@ -4,5 +4,5 @@ data class DomainQuestion (
         val question : String,
         val quote : String,
         val quoteAuthor : String,
-        val id: Int
+        val id: Int=-1,
 )

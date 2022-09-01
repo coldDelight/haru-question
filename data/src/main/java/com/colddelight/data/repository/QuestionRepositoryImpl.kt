@@ -10,8 +10,9 @@ class QuestionRepositoryImpl(
     private val dao: QuestionDao
 ):QuestionRepository{
     override suspend fun getQuestion(id: Int): DomainQuestion{
+
         val question = dao.getQuestion(id).toDomainQuestion()
-        Log.e("check impl", "getQuestion: $question", )
+//        val question = DomainQuestion("","","",-1,-1)
         return question
     }
 

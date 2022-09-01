@@ -8,7 +8,7 @@ class AnswerRepositoryImpl(
     private val dao: AnswerDao
 ): AnswerRepository {
     override suspend fun addAnswer(question: DomainAnswer) {
-        val data = AnswerEntity(question.answer,question.date)
+        val data = AnswerEntity(question.answer,question.date,question.q_id )
         dao.insetAnswer(data)
     }
     override suspend fun delAnswer(id: Int) {

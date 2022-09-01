@@ -8,6 +8,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.viewModels
+import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import com.colddelight.haru_question.databinding.FragmentWriteBottomSheetBinding
 import com.colddelight.haru_question.feat_home.presentation.viewmodel.WriteViewModel
@@ -82,6 +83,8 @@ class WriteBottomSheetFragment : BottomSheetDialogFragment() {
         binding.btnWrite.setOnClickListener {
             val text = binding.etWrite.text.toString()
             model.onSubmit(text)
+            findNavController().popBackStack()
+
         }
     }
 

@@ -13,7 +13,7 @@ class HaruQuestionApp:Application() {
         prefs=Prefs(applicationContext)
         //TODO 테스트용 지우기
         prefs.isChecked=false
-        prefs.questionId=3
+        prefs.questionId=2
         prefs.lastDate="NO_DATE"
         super.onCreate()
     }

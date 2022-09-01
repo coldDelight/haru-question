@@ -5,7 +5,6 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.colddelight.domain.model.DomainAnswer
 import com.colddelight.domain.use_case.AnswerUseCase
-import com.colddelight.domain.use_case.QuestionUseCase
 import com.colddelight.haru_question.HaruQuestionApp
 import com.colddelight.haru_question.R
 import dagger.hilt.android.lifecycle.HiltViewModel
@@ -31,17 +30,15 @@ class WriteViewModel @Inject constructor(
     fun onSubmit(text:String){
         val formatter = DateTimeFormatter.ofPattern("yyyy.MM.dd")
         val dateNow = LocalDate.now().format(formatter)
-        val data = DomainAnswer(text,dateNow)
+        val q_id = HaruQuestionApp.prefs.questionId
+        //TODO 임시 데이터 삭제
+        val data = DomainAnswer(text,dateNow,q_id)
         viewModelScope.launch(Dispatchers.IO) {
-            val test = UseCase.getAllAnswer()
-
-            Log.e("viewModelInit", "viewModelInit 질문 답 : $test", )
 //            UseCase.addAnswer(data).run {
 //                HaruQuestionApp.prefs.lastDate = date
 //                HaruQuestionApp.prefs.isChecked = false
-//                val id = HaruQuestionApp.prefs.questionId
-//                if(id< R.string.max_question_number){
-//                    HaruQuestionApp.prefs.questionId = id+1
+//                if(q_id< R.string.max_question_number){
+//                    HaruQuestionApp.prefs.questionId = q_id+1
 //                }else{
 //                    HaruQuestionApp.prefs.questionId = 1
 //                }

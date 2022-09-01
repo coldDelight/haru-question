@@ -12,12 +12,12 @@ interface AnswerDao {
     @Insert(onConflict = OnConflictStrategy.REPLACE)//같은 ID Replace
     suspend fun insetAnswer(answer :AnswerEntity)
 
-    @Query("SELECT * FROM AnswerEntity WHERE id = (:id)")
+    @Query("SELECT * FROM answer WHERE id = (:id)")
     suspend fun getAnswer(id:Int): AnswerEntity
 
-    @Query("SELECT * FROM AnswerEntity")
+    @Query("SELECT * FROM answer")
     suspend fun getAllAnswer():List<AnswerEntity>
 
-    @Query("DELETE FROM AnswerEntity WHERE id = :id")
+    @Query("DELETE FROM  answer WHERE id = :id")
     fun delAnswer(id: Int)
 }

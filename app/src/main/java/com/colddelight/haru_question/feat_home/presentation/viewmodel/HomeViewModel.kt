@@ -24,7 +24,7 @@ class HomeViewModel @Inject constructor(
     private val UseCase: QuestionUseCase
 ):ViewModel(){
     data class QuestionState(
-        val questionData:DomainQuestion = DomainQuestion("","","",-1),
+        val questionData:DomainQuestion = DomainQuestion("","",""),
         val state: HaruState = HaruState.READY,
         val error: String = ""
     )

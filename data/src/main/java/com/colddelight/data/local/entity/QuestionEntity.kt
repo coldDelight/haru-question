@@ -1,22 +1,25 @@
 package com.colddelight.data.local.entity
 
+import androidx.room.ColumnInfo
 import androidx.room.Entity
+import androidx.room.ForeignKey
 import androidx.room.PrimaryKey
 import com.colddelight.domain.model.DomainQuestion
 
-@Entity
+@Entity (tableName = "question")
 data class QuestionEntity (
-    val question : String,
-    val quote : String,
-    val quoteAuthor : String,
-    @PrimaryKey(autoGenerate = true) val id: Int=0
-){
+    @ColumnInfo(name= "question")val question : String,
+    @ColumnInfo(name= "quote")val quote : String,
+    @ColumnInfo(name= "quoteAuthor")val quoteAuthor : String,
+    @PrimaryKey(autoGenerate = true) val id: Int=0,
+
+    ){
     fun toDomainQuestion():DomainQuestion {
         return DomainQuestion(
             question = question,
             quote = quote,
             quoteAuthor = quoteAuthor,
-            id = id
+            id = id,
         )
     }
 }

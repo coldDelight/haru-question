@@ -47,7 +47,7 @@
         android:label="fragment_haru_worry"
         tools:layout="@layout/fragment_haru_worry" />
 
-    <fragment
+    <dialog
         android:id="@+id/writeBottomSheetFragment"
         android:name="com.colddelight.haru_question.WriteBottomSheetFragment"
         android:label="fragment_write_bottom_sheet"
@@ -64,5 +64,5 @@
         <argument
             android:name="author"
             app:argType="string" />
-    </fragment>
+    </dialog>
 </navigation>

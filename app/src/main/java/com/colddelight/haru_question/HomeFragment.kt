@@ -1,6 +1,7 @@
 package com.colddelight.haru_question
 
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -29,7 +30,6 @@ class HomeFragment : Fragment() {
         return binding.root
     }
 
-    //onCreateView should only by used for view inflation. Any logic that operates on the Fragment's view should be written in onViewCreated
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         //버튼 onClick
@@ -84,6 +84,11 @@ class HomeFragment : Fragment() {
         binding.btnDrawer.setOnClickListener {
             binding.dlHome.openDrawer(GravityCompat.START)
         }
+    }
+
+    override fun onResume() {
+        super.onResume()
+        Log.e("ㅇㅇㅇㅇ", "onResume: 이곳이 다ㅏ다다다", )
     }
 
     override fun onDestroyView() {
