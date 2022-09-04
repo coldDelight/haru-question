@@ -30,20 +30,20 @@ class WriteViewModel @Inject constructor(
     fun onSubmit(text:String){
         val formatter = DateTimeFormatter.ofPattern("yyyy.MM.dd")
         val dateNow = LocalDate.now().format(formatter)
-        val q_id = HaruQuestionApp.prefs.questionId
+//        val q_id = HaruQuestionApp.prefs.questionId
         //TODO 임시 데이터 삭제
-        val data = DomainAnswer(text,dateNow,q_id)
-        viewModelScope.launch(Dispatchers.IO) {
-            UseCase.addAnswer(data).run {
-                HaruQuestionApp.prefs.lastDate = date
-                HaruQuestionApp.prefs.isChecked = false
-                if(q_id< R.string.max_question_number){
-                    HaruQuestionApp.prefs.questionId = q_id+1
-                }else{
-                    HaruQuestionApp.prefs.questionId = 1
-                }
-            }
-        }
+//        val data = DomainAnswer(text,dateNow,q_id)
+//        viewModelScope.launch(Dispatchers.IO) {
+//            UseCase.addAnswer(data).run {
+//                HaruQuestionApp.prefs.lastDate = date
+//                HaruQuestionApp.prefs.isChecked = false
+//                if(q_id< R.string.max_question_number){
+//                    HaruQuestionApp.prefs.questionId = q_id+1
+//                }else{
+//                    HaruQuestionApp.prefs.questionId = 1
+//                }
+//            }
+//        }
     }
 
 }

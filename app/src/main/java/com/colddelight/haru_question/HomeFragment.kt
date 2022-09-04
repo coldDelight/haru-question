@@ -43,6 +43,7 @@ class HomeFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         //버튼 onClick
         setUpButton()
+        Log.e("fff", "onViewCreated: ${mainModel.test}", )
         //로티 play
         binding.lottieHome.playAnimation()
         lifecycleScope.launchWhenStarted {

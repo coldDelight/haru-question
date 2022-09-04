@@ -30,7 +30,6 @@ class HomeViewModel @Inject constructor(
     val state:StateFlow<QuestionState> = _state.asStateFlow()
 
     init{
-        setHomeTitle()
         viewModelScope.launch(Dispatchers.IO) {
 //            UseCase.addQuestion(DomainQuestion("살아간다는 것은 무엇인가요","그래, 산다는 것은 바람이 약해지는 것을 기다리는게 아니라\\n그 바람 속을 헤쳐나가는 것이다.","바람속을 걷는법"))
 //            UseCase.addQuestion(DomainQuestion("최근에 새로 시작한게 있나요? 있다면 무엇인가요","험한 언덕을 오르기 위해서는 처음에는 천천히 걷는 것이 필요하다.","William Shakespeare"))
@@ -45,37 +44,8 @@ class HomeViewModel @Inject constructor(
         }
     }
 
-    private fun setHomeTitle(){
-        val dateNow = LocalDate.now()
-        val lastDate= HaruQuestionApp.prefs.lastDate
-        val isChecked= HaruQuestionApp.prefs.isChecked
-        if(dateNow.equals(lastDate)){
-            _state.value = QuestionState(
-                state=HaruState.WAIT
-            )
-        }else if(isChecked){
-             setQuestion()
-        }else{
-            _state.value = QuestionState(
-                state=HaruState.READY
-            )
-        }
-    }
 
-    fun checkQuestion(){
-        HaruQuestionApp.prefs.isChecked=true
-        setQuestion()
-    }
 
-    private fun setQuestion(){
-        val questionId= HaruQuestionApp.prefs.questionId
-        viewModelScope.launch(Dispatchers.IO) {
-            _state.value = QuestionState(
-                state = HaruState.SHOW,
-                questionData = UseCase.getQuestion(questionId)
-            )
-        }
-    }
 //    suspend fun getQuestionS(){
 //        val tes = getQuestion.invoke(1)
 //        Log.e("ffff", "getQuestionS: $tes", )

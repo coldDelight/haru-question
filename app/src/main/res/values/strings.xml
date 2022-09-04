@@ -1,4 +1,8 @@
 <resources>
     <string name="app_name">Haru_question</string>
-    <string name="max_question_number">2</string>
+    <string name="max_question_number">99</string>
+    <string name="DATE_KEY">DATE</string>
+    <string name="QID_KEY">QID</string>
+    <string name="IS_CHECK_KEY">CHECK</string>
+    <string name="PREFERENCES_NAME">user_preferences</string>
 </resources>

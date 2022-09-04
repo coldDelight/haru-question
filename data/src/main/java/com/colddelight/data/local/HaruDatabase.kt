@@ -12,7 +12,7 @@ import com.colddelight.data.local.entity.QuestionEntity
     entities = [QuestionEntity::class,AnswerEntity::class],
     version = 4
 )
-abstract  class HaruDatabase:RoomDatabase() {
+abstract class HaruDatabase:RoomDatabase() {
     abstract val questionDao : QuestionDao
     abstract val answerDao : AnswerDao
     abstract val qnADao : QnADao
