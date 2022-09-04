@@ -5,7 +5,7 @@
     <data>
         <variable
             name="viewModel"
-            type="com.colddelight.haru_question.feat_home.presentation.viewmodel.HaruListViewModel" />
+            type="com.colddelight.haru_question.presentation.viewmodel.HaruListViewModel" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout

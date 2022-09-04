@@ -12,13 +12,21 @@ data class QnA (
         parentColumn = "id",
         entityColumn = "q_id"
     )
-    val answer: AnswerEntity
+    val answer: AnswerEntity?
     ) {
     fun toDomainQnA(): DomainQnA {
-        return DomainQnA(
-            question = question.question,
-            date = answer.date,
-            id = question.id,
-        )
+        return if(answer!=null){
+            DomainQnA(
+                question = question.question,
+                date = answer.date,
+                id = question.id,
+            )
+        }else{
+            DomainQnA(
+                question = question.question,
+                date = "NO_DATE",
+                id=question.id
+            )
+        }
     }
 }

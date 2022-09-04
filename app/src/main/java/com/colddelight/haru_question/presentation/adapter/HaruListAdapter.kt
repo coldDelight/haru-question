@@ -1,11 +1,10 @@
-package com.colddelight.haru_question.feat_home.presentation.adapter
+package com.colddelight.haru_question.presentation.adapter
 
 import android.annotation.SuppressLint
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.colddelight.domain.model.DomainQnA
-import com.colddelight.domain.model.DomainQuestion
 import com.colddelight.haru_question.databinding.ItemRecyclerListBinding
 
 class HaruListAdapter :RecyclerView.Adapter<HaruListAdapter.ViewHolder>() {

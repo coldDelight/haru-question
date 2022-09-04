@@ -1,4 +1,4 @@
-package com.colddelight.haru_question.feat_home.presentation.viewmodel
+package com.colddelight.haru_question.presentation.viewmodel
 
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel

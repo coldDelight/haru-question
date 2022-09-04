@@ -7,12 +7,14 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.core.view.GravityCompat
+import androidx.fragment.app.activityViewModels
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
 import com.colddelight.haru_question.core.util.HaruState
 import com.colddelight.haru_question.databinding.FragmentHomeBinding
-import com.colddelight.haru_question.feat_home.presentation.viewmodel.HomeViewModel
+import com.colddelight.haru_question.presentation.viewmodel.HomeViewModel
+import com.colddelight.haru_question.presentation.viewmodel.MainViewModel
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.flow.collectLatest
 import java.time.LocalDate
@@ -22,7 +24,8 @@ import java.time.format.DateTimeFormatter
 class HomeFragment : Fragment() {
     private var _binding: FragmentHomeBinding? = null
     private val binding get() = _binding!!
-    private val model: HomeViewModel by viewModels()
+//    private val model: HomeViewModel by viewModels()
+    private val mainModel:MainViewModel by activityViewModels()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -43,12 +46,12 @@ class HomeFragment : Fragment() {
         //로티 play
         binding.lottieHome.playAnimation()
         lifecycleScope.launchWhenStarted {
-            model.state.collectLatest {
+            mainModel.state.collectLatest {
                 when(it.state){
                     HaruState.READY->{
                         binding.tvHomeTitle.text = "망원경을 눌러봐라"
                         binding.lottieHome.setOnClickListener {
-                            model.checkQuestion()
+                            mainModel.checkQuestion()
                         }
                     }
                     HaruState.SHOW ->{
@@ -80,10 +83,10 @@ class HomeFragment : Fragment() {
             findNavController().navigate(R.id.action_homeFragment_to_haruWorryFragment)
         }
         binding.btnToWrite.setOnClickListener {
-            val quote = model.state.value.questionData.quote
-            val question = model.state.value.questionData.question
-            val author = model.state.value.questionData.quoteAuthor
-            val questionId = model.state.value.questionData.id
+            val quote = mainModel.state.value.questionData.quote
+            val question = mainModel.state.value.questionData.question
+            val author = mainModel.state.value.questionData.quoteAuthor
+            val questionId = mainModel.state.value.questionData.id
             val action =HomeFragmentDirections.actionHomeFragmentToWriteBottomSheetFragment(quote,question,questionId,author)
             findNavController().navigate(action)
 
@@ -93,12 +96,7 @@ class HomeFragment : Fragment() {
             binding.dlHome.openDrawer(GravityCompat.START)
         }
     }
-
-    override fun onResume() {
-        super.onResume()
-        Log.e("ㅇㅇㅇㅇ", "onResume: 이곳이 다ㅏ다다다", )
-    }
-
+    
     override fun onDestroyView() {
         super.onDestroyView()
         _binding = null

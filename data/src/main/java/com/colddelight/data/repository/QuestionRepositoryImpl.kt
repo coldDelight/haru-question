@@ -10,10 +10,15 @@ class QuestionRepositoryImpl(
     private val dao: QuestionDao
 ):QuestionRepository{
     override suspend fun getQuestion(id: Int): DomainQuestion{
-
-        val question = dao.getQuestion(id).toDomainQuestion()
-//        val question = DomainQuestion("","","",-1,-1)
-        return question
+        runCatching {
+            dao.getQuestion(id).toDomainQuestion()
+        }.onSuccess {
+            return it
+        }.onFailure {
+            Log.e("err", "getQuestion: ${it.message}", )
+        }.also {
+            return DomainQuestion("무언가 잘못되었습니다", "", "", -1)
+        }
     }
 
     override suspend fun getAllQuestion(): List<DomainQuestion> {

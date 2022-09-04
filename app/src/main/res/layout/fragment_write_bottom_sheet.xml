@@ -134,7 +134,7 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
             android:layout_marginTop="8dp"
-            android:text="&quot;영화란 지루한 부분이 커트된 인생이다.&quot;"
+            android:text="그래, 산다는 것은  바람이 약해지는 것을 기다리는게 아니라\n  그 바람 속을 헤쳐나가는 것이다"
             android:textStyle="bold"
             app:layout_constraintStart_toEndOf="@+id/view12"
             app:layout_constraintTop_toTopOf="@+id/view12" />

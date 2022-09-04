@@ -1,4 +1,4 @@
-package com.colddelight.haru_question.feat_home.presentation.viewmodel
+package com.colddelight.haru_question.presentation.viewmodel
 
 import android.util.Log
 import androidx.lifecycle.ViewModel
@@ -34,15 +34,15 @@ class WriteViewModel @Inject constructor(
         //TODO 임시 데이터 삭제
         val data = DomainAnswer(text,dateNow,q_id)
         viewModelScope.launch(Dispatchers.IO) {
-//            UseCase.addAnswer(data).run {
-//                HaruQuestionApp.prefs.lastDate = date
-//                HaruQuestionApp.prefs.isChecked = false
-//                if(q_id< R.string.max_question_number){
-//                    HaruQuestionApp.prefs.questionId = q_id+1
-//                }else{
-//                    HaruQuestionApp.prefs.questionId = 1
-//                }
-//            }
+            UseCase.addAnswer(data).run {
+                HaruQuestionApp.prefs.lastDate = date
+                HaruQuestionApp.prefs.isChecked = false
+                if(q_id< R.string.max_question_number){
+                    HaruQuestionApp.prefs.questionId = q_id+1
+                }else{
+                    HaruQuestionApp.prefs.questionId = 1
+                }
+            }
         }
     }
 

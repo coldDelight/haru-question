@@ -7,7 +7,6 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.navigation.fragment.findNavController
 import com.colddelight.haru_question.databinding.FragmentHaruWorryBinding
-import com.colddelight.haru_question.databinding.FragmentHomeBinding
 
 class HaruWorryFragment : Fragment() {
     private var _binding: FragmentHaruWorryBinding? = null

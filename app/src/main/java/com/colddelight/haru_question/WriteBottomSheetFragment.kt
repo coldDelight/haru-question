@@ -3,7 +3,6 @@ package com.colddelight.haru_question
 import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -11,7 +10,7 @@ import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import com.colddelight.haru_question.databinding.FragmentWriteBottomSheetBinding
-import com.colddelight.haru_question.feat_home.presentation.viewmodel.WriteViewModel
+import com.colddelight.haru_question.presentation.viewmodel.WriteViewModel
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
 import dagger.hilt.android.AndroidEntryPoint
 import java.time.LocalDate

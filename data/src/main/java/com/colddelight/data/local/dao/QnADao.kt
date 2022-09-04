@@ -13,6 +13,5 @@ interface QnADao {
 
     @Transaction
     @Query("SELECT * FROM question")
-    //TODO 확인하기
-    suspend fun getAllQnA():QnA
+    suspend fun getAllQnA():List<QnA>
 }

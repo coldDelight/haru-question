@@ -1,4 +1,4 @@
-package com.colddelight.haru_question.feat_home.di
+package com.colddelight.haru_question.di
 
 import android.app.Application
 import androidx.room.Room

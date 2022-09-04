@@ -8,10 +8,8 @@ import android.view.ViewGroup
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import com.colddelight.haru_question.databinding.FragmentHaruListBinding
-import com.colddelight.haru_question.databinding.FragmentHaruWorryBinding
-import com.colddelight.haru_question.feat_home.presentation.adapter.HaruListAdapter
-import com.colddelight.haru_question.feat_home.presentation.viewmodel.HaruListViewModel
-import com.colddelight.haru_question.feat_home.presentation.viewmodel.HomeViewModel
+import com.colddelight.haru_question.presentation.adapter.HaruListAdapter
+import com.colddelight.haru_question.presentation.viewmodel.HaruListViewModel
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint

@@ -9,19 +9,10 @@ import com.colddelight.domain.repository.QnARepository
 class QnARepositoryImpl(private val dao: QnADao
 ): QnARepository {
     override suspend fun getQnA(id: Int): DomainQnA {
-        return DomainQnA("d","d",1,)
-//        return dao.getQnA(id).toDomainQnA()
+        return dao.getQnA(id).toDomainQnA()
     }
 
-    override suspend fun getAllQnA():List<DomainQnA> {
-//        val data = dao.getAllQnA()
-//        Log.e("dtaat", "getAllQnA: $data", )
-//        return arrayListOf(DomainQnA("d","d",1,))
-        return arrayListOf(dao.getAllQnA().toDomainQnA())
-
-
-//        return dao.getAllQnA().map {
-//            it.toDomainQnA()
-//        }
+    override suspend fun getAllQnA(): List<DomainQnA> {
+        return dao.getAllQnA().map { it.toDomainQnA() }.filter { it.date!="NO_DATE" }
     }
 }

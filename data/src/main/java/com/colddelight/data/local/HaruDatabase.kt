@@ -10,7 +10,7 @@ import com.colddelight.data.local.entity.QuestionEntity
 
 @Database(
     entities = [QuestionEntity::class,AnswerEntity::class],
-    version = 3
+    version = 4
 )
 abstract  class HaruDatabase:RoomDatabase() {
     abstract val questionDao : QuestionDao
