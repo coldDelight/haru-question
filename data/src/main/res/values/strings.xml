@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="DATE_KEY">DATE</string>
+    <string name="QID_KEY">QID</string>
+    <string name="IS_CHECK_KEY">CHECK</string>
+    <string name="PREFERENCES_NAME">user_preferences</string>
+    <string name="max_question_number">99</string>
+</resources>

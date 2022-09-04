@@ -40,7 +40,13 @@
         android:id="@+id/haruListFragment"
         android:name="com.colddelight.haru_question.HaruListFragment"
         android:label="fragment_haru_list"
-        tools:layout="@layout/fragment_haru_list" />
+        tools:layout="@layout/fragment_haru_list" >
+        <action
+            android:id="@+id/action_haruListFragment_to_ListDetailFragment"
+            app:destination="@id/ListDetailFragment"
+            app:enterAnim="@android:anim/fade_in"
+            app:popExitAnim="@android:anim/fade_out" />
+    </fragment>
     <fragment
         android:id="@+id/haruWorryFragment"
         android:name="com.colddelight.haru_question.HaruWorryFragment"
@@ -65,4 +71,13 @@
             android:name="author"
             app:argType="string" />
     </dialog>
+    <fragment
+        android:id="@+id/ListDetailFragment"
+        android:name="com.colddelight.haru_question.ListDetailFragment"
+        android:label="fragment_worry_detail"
+        tools:layout="@layout/fragment_list_detail" >
+        <argument
+            android:name="id"
+            app:argType="integer" />
+    </fragment>
 </navigation>

@@ -19,12 +19,18 @@ data class QnA (
             DomainQnA(
                 question = question.question,
                 date = answer.date,
+                quote = question.quote,
+                quoteAuthor = question.quoteAuthor,
+                answer = answer.answer,
                 id = question.id,
             )
         }else{
             DomainQnA(
                 question = question.question,
                 date = "NO_DATE",
+                quote = question.quote,
+                quoteAuthor = question.quoteAuthor,
+                answer = "NO_ANSWER",
                 id=question.id
             )
         }

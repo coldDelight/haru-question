@@ -9,6 +9,8 @@ import com.colddelight.haru_question.databinding.ItemRecyclerListBinding
 
 class HaruListAdapter :RecyclerView.Adapter<HaruListAdapter.ViewHolder>() {
     private var items: List<DomainQnA> = ArrayList()
+    lateinit var onItemClick : (Int)->Unit
+
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val binding = ItemRecyclerListBinding.inflate(LayoutInflater.from(parent.context), parent, false)
@@ -16,6 +18,9 @@ class HaruListAdapter :RecyclerView.Adapter<HaruListAdapter.ViewHolder>() {
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
+        holder.itemView.setOnClickListener{
+            onItemClick(items[position].id)
+        }
         holder.setItem(items[position])
     }
 

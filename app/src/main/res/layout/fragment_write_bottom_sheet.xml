@@ -133,7 +133,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
-            android:layout_marginTop="8dp"
+            android:layout_marginTop="4dp"
             android:text="그래, 산다는 것은  바람이 약해지는 것을 기다리는게 아니라\n  그 바람 속을 헤쳐나가는 것이다"
             android:textStyle="bold"
             app:layout_constraintStart_toEndOf="@+id/view12"

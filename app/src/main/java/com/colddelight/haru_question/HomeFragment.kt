@@ -25,7 +25,7 @@ class HomeFragment : Fragment() {
     private var _binding: FragmentHomeBinding? = null
     private val binding get() = _binding!!
 //    private val model: HomeViewModel by viewModels()
-    private val mainModel:MainViewModel by activityViewModels()
+private val mainModel:MainViewModel by activityViewModels()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -43,7 +43,6 @@ class HomeFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         //버튼 onClick
         setUpButton()
-        Log.e("fff", "onViewCreated: ${mainModel.test}", )
         //로티 play
         binding.lottieHome.playAnimation()
         lifecycleScope.launchWhenStarted {

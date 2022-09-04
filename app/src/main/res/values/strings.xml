@@ -1,8 +1,7 @@
 <resources>
     <string name="app_name">Haru_question</string>
-    <string name="max_question_number">99</string>
-    <string name="DATE_KEY">DATE</string>
-    <string name="QID_KEY">QID</string>
-    <string name="IS_CHECK_KEY">CHECK</string>
-    <string name="PREFERENCES_NAME">user_preferences</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="list_title">하루모음</string>
+
 </resources>

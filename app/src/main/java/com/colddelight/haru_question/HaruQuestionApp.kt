@@ -5,9 +5,6 @@ import dagger.hilt.android.HiltAndroidApp
 
 @HiltAndroidApp
 class HaruQuestionApp:Application() {
-    companion object{
-//        lateinit var prefs:Prefs
-    }
     override fun onCreate() {
 //        prefs=Prefs(applicationContext)
         //TODO 테스트용 지우기

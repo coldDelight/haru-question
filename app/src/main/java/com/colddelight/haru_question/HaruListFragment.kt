@@ -33,6 +33,10 @@ class HaruListFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         model.check()
+        adapter.onItemClick = {
+            val action =HaruListFragmentDirections.actionHaruListFragmentToListDetailFragment(it)
+            findNavController().navigate(action)
+        }
 
         binding.btnListBack.setOnClickListener {
             findNavController().popBackStack()

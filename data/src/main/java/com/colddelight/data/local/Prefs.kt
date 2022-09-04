@@ -1,52 +1,24 @@
 package com.colddelight.data.local
 
-import androidx.datastore.core.DataStore
-import androidx.datastore.preferences.core.*
-import kotlinx.coroutines.flow.Flow
-import kotlinx.coroutines.flow.collectLatest
-import kotlinx.coroutines.flow.map
+import android.content.SharedPreferences
+import com.colddelight.data.R
 
-class Prefs(private val dataStore: DataStore<Preferences>) {
+class Prefs(private val prefs: SharedPreferences) {
+    var lastDate:String
+        get() = prefs.getString(R.string.DATE_KEY.toString(), "NO_DATE")?:"NO_DATE"
+        set(date){
+            prefs.edit().putString("LAST_DATE",date).apply()
+        }
+    var questionId:Int
+        get() = prefs.getInt(R.string.QID_KEY.toString(), 1)
 
-    suspend fun setValue(key:String,value:String){
-        val prefKey = stringPreferencesKey(key)
-        dataStore.edit {
-            it[prefKey]= value
+        set(id:Int){
+            prefs.edit().putInt(R.string.QID_KEY.toString(),id).apply()
         }
-    }
-    suspend fun setValue(key:String,value:Int){
-        val prefKey = intPreferencesKey(key)
-        dataStore.edit {
-            it[prefKey]= value
+    var isChecked:Boolean
+        get() = prefs.getBoolean(R.string.IS_CHECK_KEY.toString(), false)
+        set(value){
+            prefs.edit().putBoolean(R.string.IS_CHECK_KEY.toString(),value).apply()
         }
-    }
-    suspend fun setValue(key:String,value:Boolean){
-        val prefKey = booleanPreferencesKey(key)
-        dataStore.edit {
-            it[prefKey]= value
-        }
-    }
-
-    fun getStringData(key:String):Flow<String>{
-        val prefKey = stringPreferencesKey(key)
-        val data = dataStore.data.map {
-            it[prefKey]?:""
-        }
-        return data
-    }
-    fun getIntData(key:String):Flow<Int>{
-        val prefKey = intPreferencesKey(key)
-        val data = dataStore.data.map {
-            it[prefKey]?:0
-        }
-        return data
-    }
-    fun getBooleanData(key:String):Flow<Boolean>{
-        val prefKey = booleanPreferencesKey(key)
-        val data = dataStore.data.map {
-            it[prefKey]?:false
-        }
-        return data
-    }
 
 }
