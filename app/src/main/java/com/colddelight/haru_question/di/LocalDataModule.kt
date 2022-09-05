@@ -4,6 +4,7 @@ import android.app.Application
 import android.content.Context
 import android.content.SharedPreferences
 import androidx.room.Room
+import androidx.room.RoomDatabase
 import com.colddelight.data.local.HaruDatabase
 import com.colddelight.data.local.Prefs
 import com.colddelight.data.R
@@ -19,10 +20,12 @@ import javax.inject.Singleton
 object LocalDataModule {
     @Provides
     @Singleton
-    fun provideHaruDatabase(app:Application):HaruDatabase{
+    fun provideHaruDatabase(@ApplicationContext appContext: Context): HaruDatabase {
         return Room.databaseBuilder(
-            app,HaruDatabase::class.java,"haru_db"
-        ).fallbackToDestructiveMigration().
+            appContext,HaruDatabase::class.java,"haru_db"
+        ).createFromAsset("database/haru_db.db")
+            .fallbackToDestructiveMigration().
+
         build()
     }
 

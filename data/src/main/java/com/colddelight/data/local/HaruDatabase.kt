@@ -9,6 +9,7 @@ import com.colddelight.data.local.entity.AnswerEntity
 import com.colddelight.data.local.entity.QuestionEntity
 
 @Database(
+
     entities = [QuestionEntity::class,AnswerEntity::class],
     version = 4
 )
