@@ -5,6 +5,7 @@ import androidx.lifecycle.ViewModel
 
 
 class WorryViewModel : ViewModel() {
+    //TODO 텍스트 목록 저장 방식
     private val textList = arrayListOf<String>(
         "확실합니다.","의심할 여지가 없습니다.","무조건입니다.","믿어봐도 좋을것같습니다.","대부분 그렇습니다.",
         "네.","좋습니다.","좋아보입니다.","그대로 진행하세요.","계산결과 긍정적입니다.",

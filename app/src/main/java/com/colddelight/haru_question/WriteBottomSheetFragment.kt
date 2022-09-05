@@ -22,10 +22,6 @@ class WriteBottomSheetFragment : BottomSheetDialogFragment() {
     private val binding get() = _binding!!
     private val model: WriteViewModel by viewModels()
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-    }
-
     private val args: WriteBottomSheetFragmentArgs by navArgs()
 
     override fun onCreateView(

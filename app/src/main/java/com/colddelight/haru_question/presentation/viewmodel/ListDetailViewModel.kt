@@ -18,7 +18,6 @@ class ListDetailViewModel @Inject constructor(
     val item : MutableLiveData<DomainQnA>
         get() = _item
 
-
     suspend fun getQna(id:Int){
         viewModelScope.launch(Dispatchers.IO) {
             _item.postValue(UseCase.getQnA(id))

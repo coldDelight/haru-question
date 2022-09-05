@@ -2,9 +2,11 @@
 <layout xmlns:tools="http://schemas.android.com/tools"
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
+
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:layout_marginBottom="10dp"
         android:background="@color/indigo_700"
         android:orientation="vertical">
 
@@ -46,17 +48,6 @@
             app:layout_constraintTop_toTopOf="@+id/tv_write_date" />
 
         <View
-            android:id="@+id/view12"
-            android:layout_width="4dp"
-            android:layout_height="50dp"
-            android:layout_marginStart="24dp"
-            android:layout_marginTop="16dp"
-            android:background="@color/gold_100"
-            android:backgroundTint="@color/gold_100"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/tv_write_date" />
-
-        <View
             android:id="@+id/view8"
             android:layout_width="0dp"
             android:layout_height="1dp"
@@ -82,17 +73,61 @@
             app:layout_constraintStart_toEndOf="@+id/tv_write_date"
             app:layout_constraintTop_toTopOf="@+id/tv_write_date" />
 
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/constraintLayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginEnd="16dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tv_write_date">
+
+            <View
+                android:id="@+id/view12"
+                android:layout_width="4dp"
+                android:layout_height="0dp"
+                android:background="@color/gold_100"
+                android:backgroundTint="@color/gold_100"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/tv_write_quote"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:text="그래, 산다는 것은  바람이 약해지는 것을 기다리는게 아니라\n  그 바람 속을 헤쳐나가는 것이다"
+                android:textStyle="bold"
+                app:layout_constraintStart_toEndOf="@+id/view12"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/tv_write_author"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:layout_marginEnd="8dp"
+                android:text=" - Alfred Hitchcock"
+                android:textColor="@color/beige_100"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tv_write_quote" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
         <TextView
             android:id="@+id/tv_write_question"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="32dp"
+            android:layout_marginTop="8dp"
             android:text="테스트용 데이터입니다"
             android:textStyle="bold"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textView10" />
+            app:layout_constraintTop_toBottomOf="@+id/tv_question_number" />
 
         <TextView
             android:id="@+id/tv_write_date"
@@ -119,7 +154,7 @@
             android:id="@+id/tv_question_number"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="005"
+            android:text="001"
             android:textAppearance="@style/TextAppearance.AppCompat.Body2"
             android:textColor="@color/beige_100"
             android:textSize="16sp"
@@ -128,54 +163,33 @@
             app:layout_constraintStart_toEndOf="@+id/textView6"
             app:layout_constraintTop_toTopOf="@+id/textView6" />
 
-        <TextView
-            android:id="@+id/tv_write_quote"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
-            android:layout_marginTop="4dp"
-            android:text="그래, 산다는 것은  바람이 약해지는 것을 기다리는게 아니라\n  그 바람 속을 헤쳐나가는 것이다"
-            android:textStyle="bold"
-            app:layout_constraintStart_toEndOf="@+id/view12"
-            app:layout_constraintTop_toTopOf="@+id/view12" />
-
-        <TextView
-            android:id="@+id/tv_write_author"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginEnd="24dp"
-            android:text=" - Alfred Hitchcock"
-            android:textColor="@color/beige_100"
-            app:layout_constraintBottom_toBottomOf="@+id/view12"
-            app:layout_constraintEnd_toEndOf="parent" />
-
         <EditText
             android:id="@+id/et_write"
             android:layout_width="0dp"
-            android:layout_height="380dp"
+            android:layout_height="wrap_content"
             android:layout_marginStart="24dp"
-            android:layout_marginTop="32dp"
+            android:layout_marginTop="16dp"
             android:layout_marginEnd="24dp"
-            android:layout_marginBottom="32dp"
             android:background="@drawable/bg_input"
             android:ems="10"
             android:gravity="start|top"
             android:inputType="textMultiLine"
+            android:minLines="10"
             android:padding="16dp"
             android:textColor="@color/beige_100"
             android:textColorHighlight="@color/gold_100"
             android:textColorLink="@color/gold_100"
             android:textCursorDrawable="@drawable/cursor_drawable"
-            app:layout_constraintBottom_toTopOf="@+id/btn_write"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/view12" />
+            app:layout_constraintTop_toBottomOf="@+id/tv_write_max" />
 
         <Button
             android:id="@+id/btn_write"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginTop="48dp"
             android:layout_marginEnd="24dp"
             android:layout_marginBottom="24dp"
             android:background="@drawable/selector_btn"
@@ -185,19 +199,20 @@
             android:textSize="20sp"
             android:textStyle="bold"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent" />
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/et_write" />
 
         <TextView
             android:id="@+id/tv_write_max"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
             android:layout_marginEnd="30dp"
-            android:layout_marginBottom="8dp"
             android:text="/100"
             android:textColor="@color/beige_100"
             android:textStyle="bold"
-            app:layout_constraintBottom_toTopOf="@+id/et_write"
-            app:layout_constraintEnd_toEndOf="parent" />
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/constraintLayout" />
 
         <TextView
             android:id="@+id/tv_write_cnt"

@@ -3,5 +3,10 @@
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="list_title">하루모음</string>
+    <string name="btn_answer">답변하기</string>
+    <string name="haru_q">하루 질문</string>
+    <string name="haru_q_ready">하루 질문을 찾아 보세요!</string>
+    <string name="back">뒤로가기</string>
+    <string name="q_number">NO.</string>
 
 </resources>

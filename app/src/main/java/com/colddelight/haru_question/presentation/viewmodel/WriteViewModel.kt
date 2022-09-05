@@ -19,20 +19,11 @@ class WriteViewModel @Inject constructor(
     private val UseCase: AnswerUseCase,
     private val prefs: Prefs
 ): ViewModel() {
-    init {
-        viewModelScope.launch(Dispatchers.IO) {
-            val test = UseCase.getAllAnswer()
-            Log.e("viewModelInit", "viewModelInit 질문 답 : $test", )
-
-        }
-    }
-
 
     fun onSubmit(text:String){
         val formatter = DateTimeFormatter.ofPattern("yyyy.MM.dd")
         val dateNow = LocalDate.now().format(formatter)
         val q_id = prefs.questionId
-        //TODO 임시 데이터 삭제
         val data = DomainAnswer(text,dateNow,q_id)
         viewModelScope.launch(Dispatchers.IO) {
             UseCase.addAnswer(data).run {

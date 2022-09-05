@@ -8,14 +8,14 @@ import android.view.ViewGroup
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import com.colddelight.haru_question.databinding.FragmentHaruListBinding
+import com.colddelight.haru_question.databinding.FragmentHaruWorryBinding
 import com.colddelight.haru_question.presentation.adapter.HaruListAdapter
 import com.colddelight.haru_question.presentation.viewmodel.HaruListViewModel
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
 class HaruListFragment : Fragment() {
-    private var _binding: FragmentHaruListBinding? = null
-    private val binding get() = _binding!!
+    lateinit var binding : FragmentHaruListBinding
     private val model: HaruListViewModel by viewModels()
     private lateinit var adapter: HaruListAdapter
 
@@ -23,7 +23,7 @@ class HaruListFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View{
-        _binding = FragmentHaruListBinding.inflate(inflater, container, false)
+        binding = FragmentHaruListBinding.inflate(inflater, container, false)
         setView()
         setObserver()
         return binding.root
@@ -32,7 +32,6 @@ class HaruListFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        model.check()
         adapter.onItemClick = {
             val action =HaruListFragmentDirections.actionHaruListFragmentToListDetailFragment(it)
             findNavController().navigate(action)
@@ -51,15 +50,14 @@ class HaruListFragment : Fragment() {
     private fun setObserver() {
         // 뷰모델 관찰
         model.itemList.observe(viewLifecycleOwner) {
+            if (it.isEmpty()){
+                binding.tvNodata.visibility=View.VISIBLE
+            }else{
+                binding.tvNodata.visibility=View.GONE
+
+            }
             adapter.setData(it)
         }
 
     }
-
-
-    override fun onDestroyView() {
-        super.onDestroyView()
-        _binding = null
-    }
-
 }

@@ -27,6 +27,7 @@ class MainViewModel @Inject constructor(
     val state: StateFlow<QuestionState> = _state.asStateFlow()
 
     init{
+        //TODO 임시 데이터 삭제
         prefs.isChecked=false
         prefs.questionId=1
         prefs.lastDate="NO_DATE"

@@ -9,12 +9,13 @@ import android.view.animation.AnimationUtils
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import com.colddelight.haru_question.databinding.FragmentHaruWorryBinding
+import com.colddelight.haru_question.databinding.FragmentHomeBinding
 import com.colddelight.haru_question.presentation.viewmodel.HaruListViewModel
 import com.colddelight.haru_question.presentation.viewmodel.WorryViewModel
 
 class HaruWorryFragment : Fragment() {
-    private var _binding: FragmentHaruWorryBinding? = null
-    private val binding get() = _binding!!
+    lateinit var binding : FragmentHaruWorryBinding
+
     private val model: WorryViewModel by viewModels()
 
 
@@ -22,7 +23,7 @@ class HaruWorryFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        _binding = FragmentHaruWorryBinding.inflate(inflater, container, false)
+        binding = FragmentHaruWorryBinding.inflate(inflater, container, false)
         return binding.root
     }
 
@@ -60,9 +61,6 @@ class HaruWorryFragment : Fragment() {
         }
 
     }
-    override fun onDestroyView() {
-        super.onDestroyView()
-        _binding = null
-    }
+
 
 }

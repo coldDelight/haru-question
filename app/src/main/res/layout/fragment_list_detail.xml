@@ -92,7 +92,6 @@
             android:id="@+id/textView3"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:drawableStart="@drawable/ic_star"
             android:gravity="center_vertical"
             android:text="@string/list_title"
             android:textColor="@color/beige_100"
@@ -100,7 +99,8 @@
             app:layout_constraintBottom_toBottomOf="@+id/floatingActionButton"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="@+id/floatingActionButton" />
+            app:layout_constraintTop_toTopOf="@+id/floatingActionButton"
+            app:drawableStartCompat="@drawable/ic_star" />
 
         <com.google.android.material.floatingactionbutton.FloatingActionButton
             android:id="@+id/floatingActionButton"
@@ -112,7 +112,8 @@
             android:src="@drawable/ic_baseline_arrow_back_24"
             app:backgroundTint="@color/indigo_700"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toTopOf="parent"
+            android:contentDescription="@string/back" />
 
         <TextView
             android:id="@+id/textView5"
@@ -131,7 +132,7 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="24dp"
             android:layout_marginTop="24dp"
-            android:text="NO."
+            android:text="@string/q_number"
             android:textColor="@color/beige_100"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/view16" />
@@ -196,7 +197,6 @@
             android:layout_marginTop="24dp"
             android:background="@drawable/bg_input"
             android:padding="16dp"
-            android:text="TextView"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.475"
             app:layout_constraintStart_toStartOf="parent"

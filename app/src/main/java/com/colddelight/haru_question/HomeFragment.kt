@@ -22,16 +22,15 @@ import java.time.format.DateTimeFormatter
 
 @AndroidEntryPoint
 class HomeFragment : Fragment() {
-    private var _binding: FragmentHomeBinding? = null
-    private val binding get() = _binding!!
+    lateinit var binding : FragmentHomeBinding
 //    private val model: HomeViewModel by viewModels()
-private val mainModel:MainViewModel by activityViewModels()
+    private val mainModel:MainViewModel by activityViewModels()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        _binding = FragmentHomeBinding.inflate(inflater, container, false)
+        binding = FragmentHomeBinding.inflate(inflater, container, false)
         val formatter = DateTimeFormatter.ofPattern("yyyy.MM.dd")
         val dateNow = LocalDate.now().format(formatter)
         binding.tvHomeDate.text = dateNow
@@ -97,8 +96,8 @@ private val mainModel:MainViewModel by activityViewModels()
         }
     }
     
-    override fun onDestroyView() {
-        super.onDestroyView()
-        _binding = null
-    }
+//    override fun onDestroyView() {
+//        super.onDestroyView()
+//        binding = null
+//    }
 }

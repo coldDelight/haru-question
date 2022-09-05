@@ -22,10 +22,5 @@ class HaruListViewModel @Inject constructor(
             _itemList.postValue(UseCase.getAllQnA())
         }
     }
-    fun check(){
-        viewModelScope.launch(Dispatchers.IO) {
-            UseCase.getAllQnA()
-        }
-    }
 
 }

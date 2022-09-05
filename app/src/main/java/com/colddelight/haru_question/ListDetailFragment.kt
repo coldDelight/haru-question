@@ -9,6 +9,7 @@ import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.navArgs
 import com.colddelight.haru_question.databinding.FragmentHaruListBinding
+import com.colddelight.haru_question.databinding.FragmentHomeBinding
 import com.colddelight.haru_question.databinding.FragmentListDetailBinding
 import com.colddelight.haru_question.presentation.viewmodel.HaruListViewModel
 import com.colddelight.haru_question.presentation.viewmodel.ListDetailViewModel
@@ -16,8 +17,8 @@ import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
 class ListDetailFragment : Fragment() {
-    private var _binding: FragmentListDetailBinding? = null
-    private val binding get() = _binding!!
+    lateinit var binding : FragmentListDetailBinding
+
     private val model: ListDetailViewModel by viewModels()
 
     private val args: ListDetailFragmentArgs by navArgs()
@@ -31,7 +32,7 @@ class ListDetailFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View{
-        _binding = FragmentListDetailBinding.inflate(inflater, container, false)
+        binding = FragmentListDetailBinding.inflate(inflater, container, false)
 
         viewLifecycleOwner.lifecycleScope.launchWhenStarted {
             model.getQna(args.id)
@@ -57,9 +58,6 @@ class ListDetailFragment : Fragment() {
 
     }
 
-    override fun onDestroyView() {
-        super.onDestroyView()
-        _binding = null
-    }
+
 
 }
