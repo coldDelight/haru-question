@@ -39,24 +39,17 @@ class MainViewModel @Inject constructor(
         val formatter = DateTimeFormatter.ofPattern("yyyy.MM.dd")
         val dateNow = LocalDate.now().format(formatter)
         if(dateNow.equals(prefs.lastDate)){
-            Log.e("gere", "setHomeTitle: 111111111", )
             _state.value = QuestionState(
                 state= HaruState.WAIT
             )
         }else if(prefs.isChecked){
-            Log.e("gere", "setHomeTitle: 2222222", )
-
             setQuestion()
-        }else{            Log.e("gere", "setHomeTitle: 33333333", )
-
-
+        }else{
             _state.value = QuestionState(
-
                 state= HaruState.READY
             )
         }
     }
-
     fun checkQuestion(){
         prefs.isChecked=true
         setQuestion()

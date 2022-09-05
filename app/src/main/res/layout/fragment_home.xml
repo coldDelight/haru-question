@@ -8,18 +8,6 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-        <com.google.android.material.navigation.NavigationView
-            android:id="@+id/navigation_view"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_gravity="start"
-            android:background="@color/indigo_700"
-            android:backgroundTint="@color/indigo_700"
-            android:fitsSystemWindows="true"
-            app:headerLayout="@layout/navi_header"
-            app:itemTextColor="@color/gold_100"
-            app:menu="@menu/navi_menu" />
-
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
@@ -179,5 +167,17 @@
 
 
         </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <com.google.android.material.navigation.NavigationView
+            android:id="@+id/navigation_view"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_gravity="start"
+            android:background="@color/indigo_700"
+            android:backgroundTint="@color/indigo_700"
+            android:fitsSystemWindows="true"
+            app:headerLayout="@layout/navi_header"
+            app:itemTextColor="@color/gold_100"
+            app:menu="@menu/navi_menu" />
     </androidx.drawerlayout.widget.DrawerLayout>
 </layout>

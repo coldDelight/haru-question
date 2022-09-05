@@ -4,6 +4,7 @@ plugins {
     id 'kotlin-kapt'
     id 'dagger.hilt.android.plugin'
     id 'androidx.navigation.safeargs.kotlin'
+    id 'com.google.android.gms.oss-licenses-plugin'
 }
 
 android {
@@ -89,4 +90,8 @@ dependencies {
     //data store
     implementation "androidx.datastore:datastore-preferences:1.0.0"
     implementation "androidx.datastore:datastore-preferences-core:1.0.0"
+
+
+    //oss
+    implementation 'com.google.android.gms:play-services-oss-licenses:17.0.0'
 }
