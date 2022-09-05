@@ -15,7 +15,6 @@ class QuestionRepositoryImpl(
         }.onSuccess {
             return it
         }.onFailure {
-            Log.e("err", "getQuestion: ${it.message}", )
         }.also {
             return DomainQuestion("무언가 잘못되었습니다", "", "", -1)
         }
@@ -23,14 +22,6 @@ class QuestionRepositoryImpl(
 
     override suspend fun getAllQuestion(): List<DomainQuestion> {
         return dao.getAllQuestion().map { it.toDomainQuestion() }
-    }
-
-    override suspend fun addQuestion(question: DomainQuestion) {
-        val teset = QuestionEntity(question.question,question.quote,question.quoteAuthor)
-        dao.insetQuestion(teset)
-    }
-    override suspend fun delQuestion(id:Int) {
-        dao.delQuestion(id)
     }
 
 }
