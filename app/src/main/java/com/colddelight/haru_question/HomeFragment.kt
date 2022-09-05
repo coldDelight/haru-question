@@ -24,7 +24,7 @@ import java.time.format.DateTimeFormatter
 class HomeFragment : Fragment() {
     lateinit var binding : FragmentHomeBinding
 //    private val model: HomeViewModel by viewModels()
-    private val mainModel:MainViewModel by activityViewModels()
+private val mainModel:MainViewModel by activityViewModels()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -48,7 +48,7 @@ class HomeFragment : Fragment() {
             mainModel.state.collectLatest {
                 when(it.state){
                     HaruState.READY->{
-                        binding.tvHomeTitle.text = "망원경을 눌러봐라"
+                        binding.tvHomeTitle.text = resources.getString(R.string.haru_q_ready)
                         binding.lottieHome.setOnClickListener {
                             mainModel.checkQuestion()
                         }
@@ -65,13 +65,17 @@ class HomeFragment : Fragment() {
 
                     }
                     HaruState.WAIT->{
-                        binding.tvHomeTitle.text = "내일을 기다리자"
+                        binding.tvHomeTitle.text = resources.getString(R.string.haru_q_ready)
                         binding.lottieHome.setAnimation(R.raw.home_third)
                         binding.lottieHome.playAnimation()
                     }
                 }
             }
         }
+    }
+
+    override fun onResume() {
+        super.onResume()
     }
 
     private fun setUpButton(){

@@ -1,5 +1,6 @@
 package com.colddelight.haru_question.presentation.viewmodel
 
+import android.util.Log
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.colddelight.data.local.Prefs
@@ -11,6 +12,7 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.*
 import kotlinx.coroutines.launch
 import java.time.LocalDate
+import java.time.format.DateTimeFormatter
 import javax.inject.Inject
 
 @HiltViewModel
@@ -32,24 +34,29 @@ class MainViewModel @Inject constructor(
         prefs.questionId=1
         prefs.lastDate="NO_DATE"
         setHomeTitle()
-        viewModelScope.launch(Dispatchers.IO)  {
-
-        }
     }
-    private fun setHomeTitle(){
-        val dateNow = LocalDate.now()
+    fun setHomeTitle(){
+        val formatter = DateTimeFormatter.ofPattern("yyyy.MM.dd")
+        val dateNow = LocalDate.now().format(formatter)
         if(dateNow.equals(prefs.lastDate)){
+            Log.e("gere", "setHomeTitle: 111111111", )
             _state.value = QuestionState(
                 state= HaruState.WAIT
             )
         }else if(prefs.isChecked){
+            Log.e("gere", "setHomeTitle: 2222222", )
+
             setQuestion()
-        }else{
+        }else{            Log.e("gere", "setHomeTitle: 33333333", )
+
+
             _state.value = QuestionState(
+
                 state= HaruState.READY
             )
         }
     }
+
     fun checkQuestion(){
         prefs.isChecked=true
         setQuestion()

@@ -15,7 +15,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="50dp"
-            android:layout_marginTop="16dp"
+            android:layout_marginTop="32dp"
             android:text="하루질문"
             android:textStyle="bold"
             app:layout_constraintStart_toStartOf="parent"

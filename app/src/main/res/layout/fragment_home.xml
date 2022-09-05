@@ -27,27 +27,6 @@
             android:backgroundTint="@color/indigo_700"
             tools:context=".HomeFragment">
 
-            <ImageButton
-                android:id="@+id/btn_to_list"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:backgroundTint="@color/indigo_700"
-                android:src="@drawable/ic_star"
-                app:layout_constraintBottom_toBottomOf="@+id/btn_to_worry"
-                app:layout_constraintEnd_toStartOf="@+id/btn_to_worry"
-                app:layout_constraintTop_toTopOf="@+id/btn_to_worry" />
-
-            <ImageButton
-                android:id="@+id/btn_to_worry"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="8dp"
-                android:layout_marginEnd="8dp"
-                android:backgroundTint="@color/indigo_700"
-                android:src="@drawable/ic_moon"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
-
             <View
                 android:id="@+id/view3"
                 android:layout_width="0dp"
@@ -119,23 +98,11 @@
                 app:layout_constraintHorizontal_bias="0.5"
                 app:layout_constraintStart_toStartOf="parent" />
 
-            <ImageButton
-                android:id="@+id/btn_drawer"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="8dp"
-                android:layout_marginTop="8dp"
-                android:backgroundTint="@color/indigo_700"
-                android:src="@drawable/ic_baseline_view_headline_24"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
-
             <TextView
                 android:id="@+id/textView2"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="8dp"
-                android:layout_marginTop="30dp"
+                android:layout_marginTop="24dp"
                 android:text="@string/haru_q"
                 android:textStyle="bold"
                 app:layout_constraintStart_toEndOf="@+id/btn_drawer"
@@ -173,6 +140,42 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/view5"
                 app:lottie_rawRes="@raw/home_first" />
+
+            <com.google.android.material.floatingactionbutton.FloatingActionButton
+                android:id="@+id/btn_to_list"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:layout_marginEnd="8dp"
+                android:clickable="true"
+                app:backgroundTint="@color/indigo_500"
+                app:layout_constraintEnd_toStartOf="@+id/btn_to_worry"
+                app:layout_constraintTop_toTopOf="parent"
+                app:srcCompat="@drawable/ic_star" />
+
+            <com.google.android.material.floatingactionbutton.FloatingActionButton
+                android:id="@+id/btn_to_worry"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:layout_marginEnd="8dp"
+                android:clickable="true"
+                app:backgroundTint="@color/indigo_500"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:srcCompat="@drawable/ic_moon" />
+
+            <com.google.android.material.floatingactionbutton.FloatingActionButton
+                android:id="@+id/btn_drawer"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="8dp"
+                android:clickable="true"
+                app:backgroundTint="@color/indigo_500"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:srcCompat="@drawable/ic_baseline_view_headline_24" />
 
 
         </androidx.constraintlayout.widget.ConstraintLayout>

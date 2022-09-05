@@ -6,10 +6,12 @@ import android.text.TextWatcher
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.fragment.app.activityViewModels
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import com.colddelight.haru_question.databinding.FragmentWriteBottomSheetBinding
+import com.colddelight.haru_question.presentation.viewmodel.MainViewModel
 import com.colddelight.haru_question.presentation.viewmodel.WriteViewModel
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
 import dagger.hilt.android.AndroidEntryPoint
@@ -20,6 +22,7 @@ import java.time.format.DateTimeFormatter
 class WriteBottomSheetFragment : BottomSheetDialogFragment() {
     private var _binding: FragmentWriteBottomSheetBinding? = null
     private val binding get() = _binding!!
+    private val mainModel: MainViewModel by activityViewModels()
     private val model: WriteViewModel by viewModels()
 
     private val args: WriteBottomSheetFragmentArgs by navArgs()
@@ -79,6 +82,8 @@ class WriteBottomSheetFragment : BottomSheetDialogFragment() {
         binding.btnWrite.setOnClickListener {
             val text = binding.etWrite.text.toString()
             model.onSubmit(text)
+
+            mainModel.setHomeTitle()
             findNavController().popBackStack()
 
         }
