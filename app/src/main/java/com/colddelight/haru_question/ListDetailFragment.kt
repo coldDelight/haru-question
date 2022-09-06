@@ -46,6 +46,7 @@ class ListDetailFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         setObserver()
     }
+
     private fun setObserver() {
         // 뷰모델 관찰
         model.item.observe(viewLifecycleOwner) {

@@ -1,6 +1,8 @@
 package com.colddelight.haru_question
 
+import android.graphics.Typeface
 import android.os.Bundle
+import android.view.Gravity
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -12,10 +14,13 @@ import com.colddelight.haru_question.databinding.FragmentHaruWorryBinding
 import com.colddelight.haru_question.databinding.FragmentHomeBinding
 import com.colddelight.haru_question.presentation.viewmodel.HaruListViewModel
 import com.colddelight.haru_question.presentation.viewmodel.WorryViewModel
+import com.skydoves.balloon.ArrowPositionRules
+import com.skydoves.balloon.Balloon
+import com.skydoves.balloon.BalloonAnimation
+import com.skydoves.balloon.BalloonSizeSpec
 
 class HaruWorryFragment : Fragment() {
     lateinit var binding : FragmentHaruWorryBinding
-
     private val model: WorryViewModel by viewModels()
 
 
@@ -32,7 +37,7 @@ class HaruWorryFragment : Fragment() {
         setObserver()
 
         binding.lottieWorry.playAnimation()
-        val fadeInAni = AnimationUtils.loadAnimation(this.context,R.anim.fade_in)
+        val fadeInAni = AnimationUtils.loadAnimation(requireContext(),R.anim.fade_in)
         binding.clWorry.startAnimation(fadeInAni)
 
         binding.btnWorryBack.setOnClickListener {
@@ -44,6 +49,29 @@ class HaruWorryFragment : Fragment() {
             binding.lottieWorry.speed = -1f
             binding.lottieWorry.playAnimation()
             model.getText()
+        }
+        val balloon = Balloon.Builder(requireContext())
+            .setWidthRatio(0.5f)
+            .setHeight(BalloonSizeSpec.WRAP)
+            .setText("\n결정이 필요한 내용을 마음속으로 생각하고 터치해보세요. 결정에 도움을 드립니다.\n")
+            .setTextColorResource(R.color.beige_100)
+            .setBackgroundColorResource(R.color.gold_200)
+            .setTextSize(16f)
+            .setTextTypeface(Typeface.BOLD)
+//            .setIconDrawableResource(R.drawable.ic_tooltips)
+            .setArrowPositionRules(ArrowPositionRules.ALIGN_ANCHOR)
+            .setArrowSize(10)
+            .setArrowPosition(0.5f)
+            .setPadding(12)
+//            .setPaddingTop(16)
+//            .setPaddingBottom(16)
+            .setCornerRadius(16f)
+            .setBalloonAnimation(BalloonAnimation.FADE)
+            .setLifecycleOwner(viewLifecycleOwner)
+            .build()
+
+        binding.btnTip.setOnClickListener{
+            balloon.showAlignBottom(anchor = it)
         }
 
         binding.lottieRefresh.setOnClickListener {
