@@ -67,7 +67,7 @@
             app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/btn_tip"
-            app:lottie_rawRes="@raw/worry" />
+            app:lottie_rawRes="@raw/worry_main" />
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/cl_worry"
