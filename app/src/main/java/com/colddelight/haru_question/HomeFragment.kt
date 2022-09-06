@@ -1,9 +1,11 @@
 package com.colddelight.haru_question
 
+import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
+import android.view.MenuItem
 import android.view.View
 import android.view.ViewGroup
 import androidx.core.view.GravityCompat
@@ -15,13 +17,15 @@ import com.colddelight.haru_question.core.util.HaruState
 import com.colddelight.haru_question.databinding.FragmentHomeBinding
 import com.colddelight.haru_question.presentation.viewmodel.HomeViewModel
 import com.colddelight.haru_question.presentation.viewmodel.MainViewModel
+import com.google.android.gms.oss.licenses.OssLicensesMenuActivity
+import com.google.android.material.navigation.NavigationView
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.flow.collectLatest
 import java.time.LocalDate
 import java.time.format.DateTimeFormatter
 
 @AndroidEntryPoint
-class HomeFragment : Fragment() {
+class HomeFragment : Fragment() ,NavigationView.OnNavigationItemSelectedListener{
     lateinit var binding : FragmentHomeBinding
 //    private val model: HomeViewModel by viewModels()
 private val mainModel:MainViewModel by activityViewModels()
@@ -37,11 +41,12 @@ private val mainModel:MainViewModel by activityViewModels()
 
         return binding.root
     }
-
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         //버튼 onClick
         setUpButton()
+        binding.navigationView.setNavigationItemSelectedListener(this)
+
         //로티 play
         binding.lottieHome.playAnimation()
         lifecycleScope.launchWhenStarted {
@@ -73,7 +78,6 @@ private val mainModel:MainViewModel by activityViewModels()
             }
         }
     }
-
     override fun onResume() {
         super.onResume()
     }
@@ -92,16 +96,25 @@ private val mainModel:MainViewModel by activityViewModels()
             val questionId = mainModel.state.value.questionData.id
             val action =HomeFragmentDirections.actionHomeFragmentToWriteBottomSheetFragment(quote,question,questionId,author)
             findNavController().navigate(action)
-
         }
         //드로어
         binding.btnDrawer.setOnClickListener {
             binding.dlHome.openDrawer(GravityCompat.START)
         }
     }
-    
-//    override fun onDestroyView() {
-//        super.onDestroyView()
-//        binding = null
-//    }
+
+    override fun onNavigationItemSelected(item: MenuItem): Boolean {
+        when(item.itemId){
+                R.id.item_open_source->{
+                    Intent(requireActivity().applicationContext, OssLicensesMenuActivity::class.java).also {it2->
+                        OssLicensesMenuActivity.setActivityTitle("오픈소스 라이선스")
+                        startActivity(it2)
+                    }
+                }
+                else->{
+
+                }
+            }
+        return true
+    }
 }
