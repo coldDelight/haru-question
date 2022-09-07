@@ -13,6 +13,7 @@ class QnARepositoryImpl(private val dao: QnADao
     }
 
     override suspend fun getAllQnA(): List<DomainQnA> {
+        Log.e("TAG", "getAllQnA: ${dao.getAllQnA()}", )
         return dao.getAllQnA().map { it.toDomainQnA() }.filter { it.date!="NO_DATE" }
     }
 }

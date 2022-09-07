@@ -101,6 +101,9 @@ class HaruWorryFragment : Fragment() {
             binding.lottieWorry.playAnimation()
             binding.lottieWorry.addAnimatorListener(object : Animator.AnimatorListener {
                 override fun onAnimationStart(animation: Animator) {
+                    binding.lottieWorry.setOnClickListener {
+
+                    }
                 }
                 override fun onAnimationEnd(animation: Animator) {
                     if(binding.lottieWorry.speed==-1f){
@@ -110,6 +113,7 @@ class HaruWorryFragment : Fragment() {
                         binding.lottieWorry.startAnimation(AnimationUtils.loadAnimation(requireContext(),R.anim.fade_in_short)).also {
                             binding.lottieWorry.playAnimation()
                         }
+
                     }
                 }
                 override fun onAnimationCancel(animation: Animator) {
@@ -118,12 +122,6 @@ class HaruWorryFragment : Fragment() {
                 override fun onAnimationRepeat(animation: Animator) {
                 }
             })
-
-
-
-
-
-//            binding.clWorry.startAnimation(AnimationUtils.loadAnimation(requireContext(),R.anim.fade_out))
             binding.clWorry.startAnimation(AnimationUtils.loadAnimation(requireContext(),R.anim.fade_in))
             model.getText()
         }

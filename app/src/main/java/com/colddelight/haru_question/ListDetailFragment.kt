@@ -14,6 +14,7 @@ import com.colddelight.haru_question.databinding.FragmentListDetailBinding
 import com.colddelight.haru_question.presentation.viewmodel.HaruListViewModel
 import com.colddelight.haru_question.presentation.viewmodel.ListDetailViewModel
 import dagger.hilt.android.AndroidEntryPoint
+import java.text.DecimalFormat
 
 @AndroidEntryPoint
 class ListDetailFragment : Fragment() {
@@ -55,6 +56,7 @@ class ListDetailFragment : Fragment() {
             binding.tvDetailAnswer.text = it.answer
             binding.tvDetailQutoe.text = it.quote
             binding.tvDetailQuestion.text = it.question
+            binding.tvDetailNumber.text = DecimalFormat("000").format(it.id)
         }
 
     }

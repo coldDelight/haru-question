@@ -6,6 +6,7 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.colddelight.domain.model.DomainQnA
 import com.colddelight.haru_question.databinding.ItemRecyclerListBinding
+import java.text.DecimalFormat
 
 class HaruListAdapter :RecyclerView.Adapter<HaruListAdapter.ViewHolder>() {
     private var items: List<DomainQnA> = ArrayList()
@@ -27,7 +28,7 @@ class HaruListAdapter :RecyclerView.Adapter<HaruListAdapter.ViewHolder>() {
     inner class ViewHolder(private val binding: ItemRecyclerListBinding) : RecyclerView.ViewHolder(binding.root) {
         fun setItem(item: DomainQnA){
             binding.tvListQuestion.text = item.question
-            binding.tvListNum.text = item.id.toString()
+            binding.tvListNum.text = DecimalFormat("000").format(item.id)
             binding.tvListDate.text = item.date
         }
     }

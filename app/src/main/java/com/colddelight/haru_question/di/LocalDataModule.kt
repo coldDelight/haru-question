@@ -23,9 +23,7 @@ object LocalDataModule {
     fun provideHaruDatabase(@ApplicationContext appContext: Context): HaruDatabase {
         return Room.databaseBuilder(
             appContext,HaruDatabase::class.java,"haru_db"
-        ).createFromAsset("database/haru_db.db")
-            .fallbackToDestructiveMigration().
-
+        ).createFromAsset("database/haru_db.db").
         build()
     }
 

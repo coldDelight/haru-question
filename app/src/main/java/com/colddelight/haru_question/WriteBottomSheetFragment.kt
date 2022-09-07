@@ -15,6 +15,7 @@ import com.colddelight.haru_question.presentation.viewmodel.MainViewModel
 import com.colddelight.haru_question.presentation.viewmodel.WriteViewModel
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
 import dagger.hilt.android.AndroidEntryPoint
+import java.text.DecimalFormat
 import java.time.LocalDate
 import java.time.format.DateTimeFormatter
 
@@ -43,6 +44,7 @@ class WriteBottomSheetFragment : BottomSheetDialogFragment() {
         binding.tvWriteQuote.text = args.quote
         binding.tvWriteAuthor.text = args.author
         binding.tvWriteDate.text = dateNow
+        binding.tvQuestionNumber.text = DecimalFormat("000").format(args.questionId)
     }
 
     private fun textCountSet(){

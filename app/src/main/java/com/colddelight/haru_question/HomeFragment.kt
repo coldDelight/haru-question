@@ -21,6 +21,7 @@ import com.google.android.gms.oss.licenses.OssLicensesMenuActivity
 import com.google.android.material.navigation.NavigationView
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.flow.collectLatest
+import java.text.DecimalFormat
 import java.time.LocalDate
 import java.time.format.DateTimeFormatter
 
@@ -61,6 +62,8 @@ private val mainModel:MainViewModel by activityViewModels()
                     HaruState.SHOW ->{
                         binding.btnToWrite.isEnabled=true
                         binding.tvHomeTitle.text= it.questionData.question
+                        binding.tvHomeNumber.text =  DecimalFormat("000").format(it.questionData.id)
+                        binding.tvHomeNo.text =  "NO."
                         binding.lottieHome.setOnClickListener {
                         }
                         binding.lottieHome.setAnimation(R.raw.home_second)
@@ -68,6 +71,8 @@ private val mainModel:MainViewModel by activityViewModels()
                     }
                     HaruState.WAIT->{
                         binding.tvHomeTitle.text = resources.getString(R.string.haru_q_wait)
+                        binding.tvHomeNumber.visibility=View.GONE
+                        binding.tvHomeNo.visibility=View.GONE
                         binding.lottieHome.setAnimation(R.raw.home_third)
                         binding.lottieHome.playAnimation()
                     }

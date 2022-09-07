@@ -30,8 +30,8 @@ class MainViewModel @Inject constructor(
 
     init{
         //TODO 임시 데이터 삭제
-        prefs.isChecked=false
-        prefs.questionId=2
+        prefs.isChecked=true
+        prefs.questionId=3
         prefs.lastDate="NO_DATE"
         setHomeTitle()
     }
