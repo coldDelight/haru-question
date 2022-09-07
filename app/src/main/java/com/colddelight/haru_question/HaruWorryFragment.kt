@@ -14,6 +14,7 @@ import android.view.animation.AnimationUtils
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import com.airbnb.lottie.LottieAnimationView
+import com.airbnb.lottie.LottieDrawable
 import com.airbnb.lottie.animation.keyframe.BaseKeyframeAnimation
 import com.colddelight.haru_question.databinding.FragmentHaruWorryBinding
 import com.colddelight.haru_question.databinding.FragmentHomeBinding
@@ -96,19 +97,21 @@ class HaruWorryFragment : Fragment() {
         binding.lottieWorry.setOnClickListener{
             binding.lottieRefresh.startAnimation(AnimationUtils.loadAnimation(requireContext(),R.anim.fade_in))
             binding.lottieWorry.setMaxFrame(100)
-//            Log.e("TAG", "setLottieClick: ${binding.lottieWorry.maxFrame}", )
             binding.lottieWorry.speed = -1f
             binding.lottieWorry.playAnimation()
             binding.lottieWorry.addAnimatorListener(object : Animator.AnimatorListener {
                 override fun onAnimationStart(animation: Animator) {
                 }
-
                 override fun onAnimationEnd(animation: Animator) {
-                    binding.lottieWorry.setAnimation(R.raw.worry_sub)
-                    binding.lottieWorry.speed = 1f
-                    binding.lottieWorry.playAnimation()
+                    if(binding.lottieWorry.speed==-1f){
+                        binding.lottieWorry.setAnimation(R.raw.worry_sub)
+                        binding.lottieWorry.speed = 1f
+                        binding.lottieWorry.repeatCount = LottieDrawable.INFINITE
+                        binding.lottieWorry.startAnimation(AnimationUtils.loadAnimation(requireContext(),R.anim.fade_in_short)).also {
+                            binding.lottieWorry.playAnimation()
+                        }
+                    }
                 }
-
                 override fun onAnimationCancel(animation: Animator) {
                 }
 
@@ -127,6 +130,7 @@ class HaruWorryFragment : Fragment() {
 
     }
 
+    //balloon 생성
     private fun getBalloon():Balloon{
         return Balloon.Builder(requireContext())
             .setWidthRatio(0.5f)
