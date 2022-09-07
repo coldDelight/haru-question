@@ -59,27 +59,21 @@ private val mainModel:MainViewModel by activityViewModels()
                         }
                     }
                     HaruState.SHOW ->{
-
                         binding.btnToWrite.isEnabled=true
                         binding.tvHomeTitle.text= it.questionData.question
                         binding.lottieHome.setOnClickListener {
-
                         }
                         binding.lottieHome.setAnimation(R.raw.home_second)
                         binding.lottieHome.playAnimation()
-
                     }
                     HaruState.WAIT->{
-                        binding.tvHomeTitle.text = resources.getString(R.string.haru_q_ready)
+                        binding.tvHomeTitle.text = resources.getString(R.string.haru_q_wait)
                         binding.lottieHome.setAnimation(R.raw.home_third)
                         binding.lottieHome.playAnimation()
                     }
                 }
             }
         }
-    }
-    override fun onResume() {
-        super.onResume()
     }
 
     private fun setUpButton(){

@@ -32,7 +32,6 @@ class WriteBottomSheetFragment : BottomSheetDialogFragment() {
         savedInstanceState: Bundle?
     ): View {
         _binding = FragmentWriteBottomSheetBinding.inflate(inflater, container, false)
-
         initText()
         return binding.root
     }
@@ -40,12 +39,10 @@ class WriteBottomSheetFragment : BottomSheetDialogFragment() {
     private fun initText(){
         val formatter = DateTimeFormatter.ofPattern("yyyy.MM.dd")
         val dateNow = LocalDate.now().format(formatter)
-
         binding.tvWriteQuestion.text = args.question
         binding.tvWriteQuote.text = args.quote
         binding.tvWriteAuthor.text = args.author
         binding.tvWriteDate.text = dateNow
-
     }
 
     private fun textCountSet(){
@@ -76,16 +73,12 @@ class WriteBottomSheetFragment : BottomSheetDialogFragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
         textCountSet()
-
         binding.btnWrite.setOnClickListener {
             val text = binding.etWrite.text.toString()
             model.onSubmit(text)
-
-            mainModel.setHomeTitle()
+            mainModel.answerQuestion()
             findNavController().popBackStack()
-
         }
     }
 

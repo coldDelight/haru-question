@@ -31,14 +31,16 @@ class MainViewModel @Inject constructor(
     init{
         //TODO 임시 데이터 삭제
         prefs.isChecked=false
-        prefs.questionId=1
+        prefs.questionId=2
         prefs.lastDate="NO_DATE"
         setHomeTitle()
     }
-    fun setHomeTitle(){
+    private fun setHomeTitle(){
         val formatter = DateTimeFormatter.ofPattern("yyyy.MM.dd")
         val dateNow = LocalDate.now().format(formatter)
+
         if(dateNow.equals(prefs.lastDate)){
+            Log.e("TAG", "setHomeTitle: 메인 뷰모델 정상 작동", )
             _state.value = QuestionState(
                 state= HaruState.WAIT
             )
@@ -50,6 +52,7 @@ class MainViewModel @Inject constructor(
             )
         }
     }
+
     fun checkQuestion(){
         prefs.isChecked=true
         setQuestion()
@@ -62,6 +65,14 @@ class MainViewModel @Inject constructor(
                 questionData = UseCase.getQuestion(prefs.questionId)
             )
         }
+    }
+
+    fun answerQuestion(){
+        _state.value = QuestionState(
+            state = HaruState.WAIT,
+            questionData = DomainQuestion("","",""),
+        )
+
     }
 
 }

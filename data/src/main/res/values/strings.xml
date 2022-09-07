@@ -4,5 +4,5 @@
     <string name="QID_KEY">QID</string>
     <string name="IS_CHECK_KEY">CHECK</string>
     <string name="PREFERENCES_NAME">user_preferences</string>
-    <string name="max_question_number">99</string>
+    <string name="MAX_NUMBER_KEY">MAX_NUMBER</string>
 </resources>

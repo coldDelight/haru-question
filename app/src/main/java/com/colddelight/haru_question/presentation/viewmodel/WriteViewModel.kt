@@ -1,9 +1,7 @@
 package com.colddelight.haru_question.presentation.viewmodel
 
-import android.util.Log
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.colddelight.data.R
 import com.colddelight.data.local.Prefs
 import com.colddelight.domain.model.DomainAnswer
 import com.colddelight.domain.use_case.AnswerUseCase
@@ -13,7 +11,6 @@ import kotlinx.coroutines.launch
 import java.time.LocalDate
 import java.time.format.DateTimeFormatter
 import javax.inject.Inject
-
 @HiltViewModel
 class WriteViewModel @Inject constructor(
     private val UseCase: AnswerUseCase,
@@ -29,10 +26,11 @@ class WriteViewModel @Inject constructor(
             UseCase.addAnswer(data).run {
                 prefs.lastDate = date
                 prefs.isChecked = false
-                if(q_id< R.string.max_question_number){
+                if(q_id< prefs.maxNumber){
                     prefs.questionId = q_id+1
                 }else{
                     prefs.questionId = 1
+
                 }
             }
         }

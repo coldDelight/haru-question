@@ -15,6 +15,12 @@ class Prefs(private val prefs: SharedPreferences) {
         set(id:Int){
             prefs.edit().putInt(R.string.QID_KEY.toString(),id).apply()
         }
+
+    var maxNumber:Int
+        get() = prefs.getInt(R.string.MAX_NUMBER_KEY.toString(), 2)
+        set(value:Int){
+            prefs.edit().putInt(R.string.MAX_NUMBER_KEY.toString(),value).apply()
+        }
     var isChecked:Boolean
         get() = prefs.getBoolean(R.string.IS_CHECK_KEY.toString(), false)
         set(value){
