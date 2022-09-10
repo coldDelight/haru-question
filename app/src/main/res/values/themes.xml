@@ -12,14 +12,10 @@
         <!-- Status bar color. -->
         <item name="android:statusBarColor" >@color/indigo_700</item>
         <!-- Customize your theme here. -->
-
-
         <item name="bottomSheetDialogTheme">@style/BottomSheetDialog</item>
         <item name="android:navigationBarColor" >@color/indigo_700</item>
         <item name="android:textColor" >@color/gold_100</item>
-
     </style>
-
     <style name="EditTextStyle" parent="Widget.AppCompat.EditText">
         <item name="colorControlActivated">@color/gold_100</item>
     </style>
