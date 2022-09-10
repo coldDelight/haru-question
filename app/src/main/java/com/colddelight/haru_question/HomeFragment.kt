@@ -18,6 +18,7 @@ import com.colddelight.haru_question.presentation.viewmodel.MainViewModel
 import com.google.android.gms.oss.licenses.OssLicensesMenuActivity
 import com.google.android.material.navigation.NavigationView
 import dagger.hilt.android.AndroidEntryPoint
+import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.collectLatest
 import java.text.DecimalFormat
 import java.time.LocalDate
@@ -26,8 +27,7 @@ import java.time.format.DateTimeFormatter
 @AndroidEntryPoint
 class HomeFragment : Fragment() ,NavigationView.OnNavigationItemSelectedListener{
     lateinit var binding : FragmentHomeBinding
-//    private val model: HomeViewModel by viewModels()
-private val mainModel:MainViewModel by activityViewModels()
+    private val mainModel:MainViewModel by activityViewModels()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -46,9 +46,9 @@ private val mainModel:MainViewModel by activityViewModels()
         setUpButton()
         binding.navigationView.setNavigationItemSelectedListener(this)
 
-        //로티 play
-        binding.lottieHome.playAnimation()
         lifecycleScope.launchWhenStarted {
+            delay(1500)
+            binding.lottieHome.playAnimation()
             mainModel.state.collectLatest {
                 when(it.state){
                     HaruState.READY->{

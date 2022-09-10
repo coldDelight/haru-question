@@ -13,15 +13,10 @@
         <item name="android:statusBarColor" >@color/indigo_700</item>
         <!-- Customize your theme here. -->
 
-        <item name="bottomSheetDialogTheme">@style/BottomSheetDialog</item>
-<!--        <item name="android:background" >@color/indigo_700</item>-->
-<!--        <item name="android:background" >@android:color/transparent</item>-->
 
-<!--        <item name="android:backgroundTint" >@android:color/transparent</item>-->
-<!--        <item name="android:backgroundTint" >@color/indigo_700</item>-->
+        <item name="bottomSheetDialogTheme">@style/BottomSheetDialog</item>
         <item name="android:navigationBarColor" >@color/indigo_700</item>
         <item name="android:textColor" >@color/gold_100</item>
-<!--        <item name="android:windowBackground" >@android:color/transparent</item>-->
 
     </style>
 

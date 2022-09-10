@@ -9,6 +9,7 @@ import com.colddelight.domain.use_case.QuestionUseCase
 import com.colddelight.haru_question.core.util.HaruState
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.*
 import kotlinx.coroutines.launch
 import java.time.LocalDate
@@ -20,6 +21,10 @@ class MainViewModel @Inject constructor(
     private val UseCase: QuestionUseCase,
     private val prefs: Prefs
 ):ViewModel(){
+
+    private val _isLoading = MutableStateFlow(true)
+    val isLoading = _isLoading.asStateFlow()
+
     data class QuestionState(
         val questionData: DomainQuestion = DomainQuestion("","",""),
         val state: HaruState = HaruState.READY,
@@ -29,6 +34,10 @@ class MainViewModel @Inject constructor(
     val state: StateFlow<QuestionState> = _state.asStateFlow()
 
     init{
+        viewModelScope.launch {
+            delay(1500)
+            _isLoading.value=false
+        }
         //TODO 임시 데이터 삭제
         prefs.isChecked=false
         prefs.questionId=3
