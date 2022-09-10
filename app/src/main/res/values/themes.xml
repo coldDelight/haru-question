@@ -13,6 +13,7 @@
         <item name="android:statusBarColor" >@color/indigo_700</item>
         <!-- Customize your theme here. -->
 
+        <item name="bottomSheetDialogTheme">@style/BottomSheetDialog</item>
 <!--        <item name="android:background" >@color/indigo_700</item>-->
 <!--        <item name="android:background" >@android:color/transparent</item>-->
 
@@ -27,6 +28,15 @@
     <style name="EditTextStyle" parent="Widget.AppCompat.EditText">
         <item name="colorControlActivated">@color/gold_100</item>
     </style>
+    <style name="BottomSheetDialog" parent="@style/ThemeOverlay.MaterialComponents.BottomSheetDialog">
+        <item name="bottomSheetStyle">@style/BottomSheet</item>
+        <item name="android:colorBackground">@color/white</item>
+    </style>
+
+    <style name="BottomSheet" parent="Widget.MaterialComponents.BottomSheet.Modal">
+        <item name="backgroundTint">@android:color/transparent</item>
+    </style>
+
 
 
 

@@ -10,12 +10,10 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.core.view.GravityCompat
 import androidx.fragment.app.activityViewModels
-import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
 import com.colddelight.haru_question.core.util.HaruState
 import com.colddelight.haru_question.databinding.FragmentHomeBinding
-import com.colddelight.haru_question.presentation.viewmodel.HomeViewModel
 import com.colddelight.haru_question.presentation.viewmodel.MainViewModel
 import com.google.android.gms.oss.licenses.OssLicensesMenuActivity
 import com.google.android.material.navigation.NavigationView
@@ -71,8 +69,9 @@ private val mainModel:MainViewModel by activityViewModels()
                     }
                     HaruState.WAIT->{
                         binding.tvHomeTitle.text = resources.getString(R.string.haru_q_wait)
-                        binding.tvHomeNumber.visibility=View.GONE
-                        binding.tvHomeNo.visibility=View.GONE
+                        binding.tvHomeNumber.visibility=View.INVISIBLE
+                        binding.tvHomeNo.visibility=View.INVISIBLE
+                        binding.btnToWrite.visibility = View.GONE
                         binding.lottieHome.setAnimation(R.raw.home_third)
                         binding.lottieHome.playAnimation()
                     }
