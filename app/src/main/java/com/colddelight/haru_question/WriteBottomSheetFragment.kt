@@ -55,14 +55,6 @@ class WriteBottomSheetFragment : BottomSheetDialogFragment() {
     bottomSheet.layoutParams = layoutParams
     behavior.state = BottomSheetBehavior.STATE_EXPANDED
     }
-
-    private fun getWindowHeight(): Int {
-        val displayMetrics = DisplayMetrics()
-        (context as Activity?)!!.windowManager.defaultDisplay.getMetrics(displayMetrics)
-        return displayMetrics.heightPixels
-    }
-
-
     private fun getScreenHeight(): Int {
         val context = requireContext()
         val wm = context.getSystemService(Context.WINDOW_SERVICE) as WindowManager
@@ -125,10 +117,7 @@ class WriteBottomSheetFragment : BottomSheetDialogFragment() {
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-
         super.onViewCreated(view, savedInstanceState)
-//        val be = BottomSheetBehavior.from(binding.constraintLayout)
-//        be.state = BottomSheetBehavior.STATE_EXPANDED
         textCountSet()
         binding.btnWrite.setOnClickListener {
             val text = binding.etWrite.text.toString()

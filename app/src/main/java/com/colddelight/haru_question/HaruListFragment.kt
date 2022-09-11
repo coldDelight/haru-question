@@ -8,7 +8,6 @@ import android.view.ViewGroup
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import com.colddelight.haru_question.databinding.FragmentHaruListBinding
-import com.colddelight.haru_question.databinding.FragmentHaruWorryBinding
 import com.colddelight.haru_question.presentation.adapter.HaruListAdapter
 import com.colddelight.haru_question.presentation.viewmodel.HaruListViewModel
 import dagger.hilt.android.AndroidEntryPoint
@@ -35,16 +34,15 @@ class HaruListFragment : Fragment() {
             val action =HaruListFragmentDirections.actionHaruListFragmentToListDetailFragment(it[0],it[1])
             findNavController().navigate(action)
         }
-
         binding.btnListBack.setOnClickListener {
             findNavController().popBackStack()
         }
     }
     private fun setView(){
         adapter =  HaruListAdapter().apply {
-            setHasStableIds(true) // 리사이클러 뷰 업데이트 시 깜빡임 방지
+            setHasStableIds(true)
         }
-        binding.rvHaruList.adapter = adapter // 리사이클러 뷰 연결
+        binding.rvHaruList.adapter = adapter
     }
     private fun setObserver() {
         // 뷰모델 관찰
@@ -53,9 +51,7 @@ class HaruListFragment : Fragment() {
                 binding.tvNodata.visibility=View.VISIBLE
             }else{
                 binding.tvNodata.visibility=View.GONE
-
             }
-
             adapter.setData(it)
         }
 

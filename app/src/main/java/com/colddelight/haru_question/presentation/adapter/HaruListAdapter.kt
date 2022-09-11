@@ -13,7 +13,6 @@ class HaruListAdapter :RecyclerView.Adapter<HaruListAdapter.ViewHolder>() {
     private var items: List<DomainReQnA> = ArrayList()
     lateinit var onItemClick : (List<Int>)->Unit
 
-
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val binding = ItemRecyclerListBinding.inflate(LayoutInflater.from(parent.context), parent, false)
         return ViewHolder(binding)

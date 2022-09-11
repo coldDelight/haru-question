@@ -20,7 +20,6 @@ import kotlinx.coroutines.launch
 @AndroidEntryPoint
 class MainActivity : AppCompatActivity() {
     private var backPressed = 0L
-//    private lateinit var  navController : NavController
 
     private val mainModel : MainViewModel by viewModels()
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -42,7 +41,7 @@ class MainActivity : AppCompatActivity() {
             }
             Current.HOME->{
                 mainModel.changeCurrent(Current.HOME_ING)
-                if(backPressed + 2000> System.currentTimeMillis()){
+                if(backPressed + 2800> System.currentTimeMillis()){
                     super.onBackPressed()
                 }
                 backPressed = System.currentTimeMillis()
@@ -51,7 +50,7 @@ class MainActivity : AppCompatActivity() {
                 super.onBackPressed()
             }
             Current.HOME_ING->{
-                if(backPressed + 2000> System.currentTimeMillis()){
+                if(backPressed + 2800> System.currentTimeMillis()){
                     super.onBackPressed()
                 }
             }

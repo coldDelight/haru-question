@@ -102,9 +102,10 @@
 
             <TextView
                 android:id="@+id/tv_detail_qutoe"
-                android:layout_width="wrap_content"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="16dp"
+                android:layout_marginEnd="8dp"
                 android:text="그래, 산다는 것은  바람이 약해지는 것을 기다리는게 아니라\n  그 바람 속을 헤쳐나가는 것이다"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toEndOf="@+id/view20"

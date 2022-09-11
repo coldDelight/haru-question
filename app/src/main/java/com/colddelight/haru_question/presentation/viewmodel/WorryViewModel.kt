@@ -3,7 +3,6 @@ package com.colddelight.haru_question.presentation.viewmodel
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 
-
 class WorryViewModel : ViewModel() {
     //TODO 텍스트 목록 저장 방식
     private val textList = arrayListOf(

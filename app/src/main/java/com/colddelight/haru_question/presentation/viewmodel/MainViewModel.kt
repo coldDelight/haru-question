@@ -1,6 +1,5 @@
 package com.colddelight.haru_question.presentation.viewmodel
 
-import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
@@ -24,18 +23,17 @@ class MainViewModel @Inject constructor(
     private val UseCase: QuestionUseCase,
     private val prefs: Prefs
 ):ViewModel(){
-
     //splash 상태
     private val _isLoading = MutableStateFlow(true)
     val isLoading = _isLoading.asStateFlow()
 
     private val _current = MutableLiveData(Current.HOME)
-    val current = _current as LiveData<Current>
+    val current: LiveData<Current>
+        get()=_current
 
      fun changeCurrent(current: Current){
         _current.value = current
     }
-
 
     data class QuestionState(
         val questionData: DomainQuestion = DomainQuestion("","",""),
