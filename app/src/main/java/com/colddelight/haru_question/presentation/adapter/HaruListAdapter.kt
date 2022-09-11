@@ -5,12 +5,13 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.colddelight.domain.model.DomainQnA
+import com.colddelight.domain.model.DomainReQnA
 import com.colddelight.haru_question.databinding.ItemRecyclerListBinding
 import java.text.DecimalFormat
 
 class HaruListAdapter :RecyclerView.Adapter<HaruListAdapter.ViewHolder>() {
-    private var items: List<DomainQnA> = ArrayList()
-    lateinit var onItemClick : (Int)->Unit
+    private var items: List<DomainReQnA> = ArrayList()
+    lateinit var onItemClick : (List<Int>)->Unit
 
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
@@ -20,13 +21,13 @@ class HaruListAdapter :RecyclerView.Adapter<HaruListAdapter.ViewHolder>() {
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         holder.itemView.setOnClickListener{
-            onItemClick(items[position].id)
+            onItemClick(listOf(items[position].id,items[position].a_id))
         }
         holder.setItem(items[position])
     }
 
     inner class ViewHolder(private val binding: ItemRecyclerListBinding) : RecyclerView.ViewHolder(binding.root) {
-        fun setItem(item: DomainQnA){
+        fun setItem(item: DomainReQnA){
             binding.tvListQuestion.text = item.question
             binding.tvListNum.text = DecimalFormat("000").format(item.id)
             binding.tvListDate.text = item.date
@@ -34,7 +35,7 @@ class HaruListAdapter :RecyclerView.Adapter<HaruListAdapter.ViewHolder>() {
     }
 
     @SuppressLint("NotifyDataSetChanged")
-    internal fun setData(newItems: List<DomainQnA>) {
+    internal fun setData(newItems: List<DomainReQnA>) {
         this.items = newItems
         notifyDataSetChanged()
     }

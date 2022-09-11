@@ -8,7 +8,7 @@ import com.colddelight.data.local.model.QnA
 @Dao
 interface QnADao {
     @Transaction
-    @Query("SELECT * FROM question WHERE question.id = :id")
+    @Query("SELECT * FROM question WHERE id = :id")
     suspend fun getQnA(id:Int):QnA
 
     @Transaction

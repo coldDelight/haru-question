@@ -31,9 +31,8 @@ class HaruListFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
         adapter.onItemClick = {
-            val action =HaruListFragmentDirections.actionHaruListFragmentToListDetailFragment(it)
+            val action =HaruListFragmentDirections.actionHaruListFragmentToListDetailFragment(it[0],it[1])
             findNavController().navigate(action)
         }
 
@@ -56,6 +55,7 @@ class HaruListFragment : Fragment() {
                 binding.tvNodata.visibility=View.GONE
 
             }
+
             adapter.setData(it)
         }
 

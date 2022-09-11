@@ -24,7 +24,7 @@ object LocalDataModule {
         return Room.databaseBuilder(
             appContext,HaruDatabase::class.java,"haru_db"
         ).createFromAsset("database/haru_db.db").
-        fallbackToDestructiveMigration().
+//        fallbackToDestructiveMigration().
         build()
     }
 

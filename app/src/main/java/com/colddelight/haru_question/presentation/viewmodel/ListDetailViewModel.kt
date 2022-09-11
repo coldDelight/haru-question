@@ -4,6 +4,7 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.colddelight.domain.model.DomainQnA
+import com.colddelight.domain.model.DomainReQnA
 import com.colddelight.domain.use_case.QnAUseCase
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.Dispatchers
@@ -14,13 +15,13 @@ import javax.inject.Inject
 class ListDetailViewModel @Inject constructor(
     private val UseCase: QnAUseCase
 ): ViewModel() {
-    private var _item: MutableLiveData<DomainQnA> = MutableLiveData()
-    val item : MutableLiveData<DomainQnA>
+    private var _item: MutableLiveData<DomainReQnA> = MutableLiveData()
+    val item : MutableLiveData<DomainReQnA>
         get() = _item
 
-    suspend fun getQna(id:Int){
+    suspend fun getQna(id:Int,a_id:Int){
         viewModelScope.launch(Dispatchers.IO) {
-            _item.postValue(UseCase.getQnA(id))
+            _item.postValue(UseCase.getQnA(id,a_id))
         }
     }
 

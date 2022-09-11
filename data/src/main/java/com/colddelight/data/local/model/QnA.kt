@@ -12,26 +12,29 @@ data class QnA (
         parentColumn = "id",
         entityColumn = "q_id"
     )
-    val answer: AnswerEntity?
+    val answer: List<AnswerEntity>?
     ) {
     fun toDomainQnA(): DomainQnA {
         return if(answer!=null){
             DomainQnA(
                 question = question.question,
-                date = answer.date,
+                date = answer.map { it.date },
                 quote = question.quote,
                 quoteAuthor = question.quoteAuthor,
-                answer = answer.answer,
+                answer = answer.map { it.answer },
                 id = question.id,
+                a_id = answer.map { it.id }
             )
         }else{
             DomainQnA(
                 question = question.question,
-                date = "NO_DATE",
+                date = arrayListOf(),
                 quote = question.quote,
                 quoteAuthor = question.quoteAuthor,
-                answer = "NO_ANSWER",
-                id=question.id
+                answer = arrayListOf(),
+                id =question.id,
+                a_id = arrayListOf()
+
             )
         }
     }

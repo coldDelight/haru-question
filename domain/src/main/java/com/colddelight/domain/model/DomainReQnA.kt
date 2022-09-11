@@ -1,11 +1,11 @@
 package com.colddelight.domain.model
 
-data class DomainQnA(
-    val answer: List<String>,
+data class DomainReQnA(
+    val answer: String,
     val question: String,
-    val date: List<String>,
+    val date: String,
     val quote: String,
     val quoteAuthor: String,
     val id: Int,
-    val a_id:List<Int>
+    val a_id:Int
 )

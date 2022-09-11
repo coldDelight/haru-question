@@ -200,7 +200,7 @@
                 android:layout_height="wrap_content"
                 android:background="@drawable/button_abled"
                 android:padding="14dp"
-                android:text="종료하려면 한번 더 누르세요"
+                android:text="@string/back_text"
                 android:textColor="@color/beige_100"
                 android:textSize="20sp"
                 android:textStyle="bold"

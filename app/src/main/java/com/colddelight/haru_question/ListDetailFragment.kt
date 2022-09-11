@@ -42,10 +42,8 @@ class ListDetailFragment : Fragment() {
         binding = FragmentListDetailBinding.inflate(inflater, container, false)
 
         viewLifecycleOwner.lifecycleScope.launchWhenStarted {
-            model.getQna(args.id)
+            model.getQna(args.id,args.aId)
         }
-
-
         return binding.root
     }
 
@@ -66,6 +64,7 @@ class ListDetailFragment : Fragment() {
     private fun setObserver() {
         // 뷰모델 관찰
         model.item.observe(viewLifecycleOwner) {
+            //TODO 확인!
             binding.tvDetailDate.text = it.date
             binding.tvDetailAuthor.text = it.quoteAuthor
             binding.tvDetailAnswer.text = it.answer
