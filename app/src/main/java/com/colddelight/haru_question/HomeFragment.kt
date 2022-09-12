@@ -49,6 +49,18 @@ class HomeFragment : Fragment() ,NavigationView.OnNavigationItemSelectedListener
         setUpButton()
         binding.navigationView.setNavigationItemSelectedListener(this)
 
+        lifecycleScope.launch(){
+            mainModel.isLoading.collectLatest {
+                if(it){
+
+                }else{
+                    binding.lottieHome.playAnimation()
+                }
+            }
+
+
+        }
+
         lifecycleScope.launch(Dispatchers.Main) {
             mainModel.current.observe(viewLifecycleOwner) {
                 when (it){
@@ -67,7 +79,7 @@ class HomeFragment : Fragment() ,NavigationView.OnNavigationItemSelectedListener
         }
 
         lifecycleScope.launchWhenStarted (){
-            binding.lottieHome.playAnimation()
+
             mainModel.state.collectLatest {
                 when(it.state){
                     HaruState.READY->{
