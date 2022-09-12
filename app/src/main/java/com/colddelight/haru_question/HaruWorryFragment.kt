@@ -73,14 +73,11 @@ class HaruWorryFragment : Fragment() {
             }
 
             override fun onAnimationEnd(p0: Animation?) {
-
                 setLottieClick()
-
             }
 
             override fun onAnimationRepeat(p0: Animation?) {
             }
-
         })
         return ani
     }

@@ -243,5 +243,22 @@
             app:layout_constraintEnd_toStartOf="@+id/tv_detail_max"
             app:layout_constraintTop_toTopOf="@+id/tv_detail_max" />
 
+        <TextView
+            android:id="@+id/tv_save_note"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/button_abled"
+            android:padding="10dp"
+            android:text="@string/save_note"
+            android:textColor="@color/beige_100"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            android:visibility="invisible"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.8" />
+
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>
