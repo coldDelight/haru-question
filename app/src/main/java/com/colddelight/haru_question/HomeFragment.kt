@@ -2,6 +2,7 @@ package com.colddelight.haru_question
 
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.MenuItem
@@ -158,6 +159,7 @@ class HomeFragment : Fragment() ,NavigationView.OnNavigationItemSelectedListener
         })
         return ani
     }
+
     override fun onNavigationItemSelected(item: MenuItem): Boolean {
         when(item.itemId){
                 R.id.item_open_source->{
@@ -166,6 +168,9 @@ class HomeFragment : Fragment() ,NavigationView.OnNavigationItemSelectedListener
                         startActivity(it2)
                     }
                 }
+            R.id.item_donate->{
+                Log.e("TAG", "onNavigationItemSelected: sfdf", )
+            }
                 else->{
 
                 }

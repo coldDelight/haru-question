@@ -144,12 +144,12 @@ class ListDetailFragment : Fragment() {
 
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.Q) {
             saveImageOnAboveAndroidQ(bitmap)
-//            Toast.makeText(requireContext(), "이미지 저장이 완료되었습니다.", Toast.LENGTH_SHORT).show()
+            binding.tvSaveNote.startAnimation(getAni())
         } else {
             val writePermission = ActivityCompat.checkSelfPermission(requireContext(), android.Manifest.permission.WRITE_EXTERNAL_STORAGE)
             if(writePermission == PackageManager.PERMISSION_GRANTED) {
                 saveImageOnUnderAndroidQ(bitmap)
-//                Toast.makeText(requireContext(), "이미지 저장이 완료되었습니다.", Toast.LENGTH_SHORT).show()
+
             } else {
                 val requestExternalStorageCode = 1
 
@@ -183,7 +183,6 @@ class ListDetailFragment : Fragment() {
                     contentValues.clear()
                     contentValues.put(MediaStore.Images.Media.IS_PENDING, 0)
                     requireActivity().contentResolver.update(uri, contentValues, null, null)
-                    binding.tvSaveNote.startAnimation(getAni())
                 }
             }
         } catch(e: FileNotFoundException) {
@@ -211,8 +210,6 @@ class ListDetailFragment : Fragment() {
             bitmap?.compress(Bitmap.CompressFormat.PNG, 100, fos)
             fos.close()
             requireActivity().sendBroadcast(Intent(Intent.ACTION_MEDIA_SCANNER_SCAN_FILE, Uri.fromFile(fileItem)))
-            binding.tvSaveNote.startAnimation(getAni())
-
         } catch (e: FileNotFoundException) {
             e.printStackTrace()
         } catch (e: IOException) {

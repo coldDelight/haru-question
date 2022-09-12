@@ -9,7 +9,7 @@
         android:title="후원하기" />
     <item
         android:id="@+id/item_version"
-        android:title="앱 버전" />
+        android:title="앱 버전 - v 1.0.0" />
     <item
         android:id="@+id/item_open_source"
         android:title="오픈소스 라이센스" />
