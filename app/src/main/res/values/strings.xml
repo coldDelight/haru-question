@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Haru_question</string>
+    <string name="app_name">HARU Q</string>
     <string name="list_title">하루모음</string>
     <string name="btn_answer">답변하기</string>
     <string name="haru_q">하루 질문</string>
