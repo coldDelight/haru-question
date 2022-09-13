@@ -1,10 +1,8 @@
 package com.colddelight.haru_question.di
 
-import android.app.Application
 import android.content.Context
 import android.content.SharedPreferences
 import androidx.room.Room
-import androidx.room.RoomDatabase
 import com.colddelight.data.local.HaruDatabase
 import com.colddelight.data.local.Prefs
 import com.colddelight.data.R

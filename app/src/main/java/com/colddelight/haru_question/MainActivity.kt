@@ -10,6 +10,8 @@ import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.NavController
 import androidx.navigation.fragment.NavHostFragment
+import com.android.billingclient.api.BillingClient
+import com.android.billingclient.api.PurchasesUpdatedListener
 import com.colddelight.haru_question.core.util.Current
 import com.colddelight.haru_question.databinding.FragmentHomeBinding
 import com.colddelight.haru_question.presentation.viewmodel.MainViewModel
@@ -22,6 +24,8 @@ class MainActivity : AppCompatActivity() {
     private var backPressed = 0L
 
     private val mainModel : MainViewModel by viewModels()
+
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         installSplashScreen().apply {

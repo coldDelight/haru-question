@@ -23,6 +23,7 @@ class MainViewModel @Inject constructor(
     private val UseCase: QuestionUseCase,
     private val prefs: Prefs
 ):ViewModel(){
+
     //splash 상태
     private val _isLoading = MutableStateFlow(true)
     val isLoading = _isLoading.asStateFlow()
@@ -49,10 +50,10 @@ class MainViewModel @Inject constructor(
             _isLoading.value=false
         }
         //TODO 임시 데이터 삭제
-        prefs.isChecked=true
+//        prefs.isChecked=true
 //        prefs.questionId=2
 //        prefs.lastDate="2022.09.10"
-        prefs.lastDate="NO_DATE"
+//        prefs.lastDate="NO_DATE"
         setHomeTitle()
     }
     private fun setHomeTitle(){
