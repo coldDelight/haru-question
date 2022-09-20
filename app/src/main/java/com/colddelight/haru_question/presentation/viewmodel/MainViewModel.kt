@@ -1,5 +1,6 @@
 package com.colddelight.haru_question.presentation.viewmodel
 
+import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
@@ -59,7 +60,6 @@ class MainViewModel @Inject constructor(
     private fun setHomeTitle(){
         val formatter = DateTimeFormatter.ofPattern("yyyy.MM.dd")
         val dateNow = LocalDate.now().format(formatter)
-
         if(dateNow.equals(prefs.lastDate)){
             _state.value = QuestionState(
                 state= HaruState.WAIT

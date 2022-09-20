@@ -18,6 +18,7 @@
         android:title="문의하기" />
     <item
         android:id="@+id/item_reset"
-        android:title="초기화"/>
+        android:title="초기화"
+        android:visible="false" />
 
 </menu>

@@ -1,5 +1,6 @@
 package com.colddelight.haru_question.di
 
+import android.app.Application
 import android.content.Context
 import android.content.SharedPreferences
 import androidx.room.Room
@@ -29,19 +30,21 @@ object LocalDataModule {
 
     @Provides
     @Singleton
-    fun providePrefs(prefs: SharedPreferences):Prefs {
-        return Prefs(prefs)
+    fun providePrefs(application: Application):Prefs {
+        return Prefs(application)
     }
 
-    @Provides
-    @Singleton
-    fun provideSharedPreferences(@ApplicationContext appContext: Context): SharedPreferences{
-        return appContext.getSharedPreferences(R.string.PREFERENCES_NAME.toString(), Context.MODE_PRIVATE)
-    }
+//    @Provides
+//    @Singleton
+//    fun providePrefs(prefs: SharedPreferences):Prefs {
+//        return Prefs(prefs)
+//    }
 
-
-
-
+//    @Provides
+//    @Singleton
+//    fun provideSharedPreferences(@ApplicationContext appContext: Context): SharedPreferences{
+//        return appContext.getSharedPreferences(R.string.PREFERENCES_NAME.toString(), Context.MODE_PRIVATE)
+//    }
 }
 
 
