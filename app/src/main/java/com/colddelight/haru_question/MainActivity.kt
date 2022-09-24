@@ -17,11 +17,7 @@ import kotlinx.coroutines.launch
 @AndroidEntryPoint
 class MainActivity : AppCompatActivity(), PurchasesUpdatedListener{
     private var backPressed = 0L
-
     private val mainModel : MainViewModel by viewModels()
-
-    private lateinit var billingClient: BillingClient
-    private var productDetailsList: List<ProductDetails> = mutableListOf()
     private lateinit var consumeListener : ConsumeResponseListener
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -41,14 +37,14 @@ class MainActivity : AppCompatActivity(), PurchasesUpdatedListener{
 
     //빌링 초기화
     private fun initBilling() {
-        billingClient = BillingClient.newBuilder(this)
+        mainModel.billingClient = BillingClient.newBuilder(this)
             .setListener(this)
             .enablePendingPurchases()
             .build()
     }
     //빌링 연결
     private fun connectBilling(){
-        billingClient.startConnection(object : BillingClientStateListener {
+        mainModel.billingClient.startConnection(object : BillingClientStateListener {
             override fun onBillingSetupFinished(billingResult: BillingResult) {
                 if (billingResult.responseCode ==  BillingClient.BillingResponseCode.OK) {
                     CoroutineScope(Dispatchers.Main).launch {
@@ -57,7 +53,6 @@ class MainActivity : AppCompatActivity(), PurchasesUpdatedListener{
                 }
             }
             override fun onBillingServiceDisconnected() {
-                Log.e("bill", "onBillingServiceDisconnected: 연결종료", )
             }
         })
     }
@@ -65,14 +60,12 @@ class MainActivity : AppCompatActivity(), PurchasesUpdatedListener{
     private fun setConsumeListener(){
         consumeListener = ConsumeResponseListener { billingResult, purchaseToken ->
             if(billingResult.responseCode == BillingClient.BillingResponseCode.OK) {
-                Log.e("bill", "initBilling: 구매 성공", )
+                //구매 성공
             } else {
-                Log.e("bill", "initBilling: 구매 t실패", )
-
+                //구매 실패
             }
         }
     }
-
 
     fun querySkuDetails() {
         val tempParam = QueryProductDetailsParams.newBuilder()
@@ -84,20 +77,9 @@ class MainActivity : AppCompatActivity(), PurchasesUpdatedListener{
                         .build()
                 )
             ).build()
-        billingClient.queryProductDetailsAsync(tempParam) { billingResult2, mutableList ->
-            productDetailsList = mutableList
+        mainModel.billingClient.queryProductDetailsAsync(tempParam) { billingResult2, mutableList ->
+            mainModel.productDetailsList = mutableList
         }
-    }
-
-    fun consume(){
-        val flowProductDetailParams = BillingFlowParams.ProductDetailsParams.newBuilder()
-            .setProductDetails(productDetailsList[0])
-            .build()
-        val flowParams = BillingFlowParams.newBuilder()
-            .setProductDetailsParamsList(listOf(flowProductDetailParams))
-            .build()
-        //구글 결제창
-        val responseCode = billingClient.launchBillingFlow(this, flowParams).responseCode
     }
 
     override fun onBackPressed() {
@@ -134,7 +116,7 @@ class MainActivity : AppCompatActivity(), PurchasesUpdatedListener{
                 val consumeParams = ConsumeParams.newBuilder()
                     .setPurchaseToken(purchase.purchaseToken)
                     .build()
-                billingClient.consumeAsync(consumeParams, consumeListener)
+                mainModel.billingClient.consumeAsync(consumeParams, consumeListener)
             }
         } else if (billingResult.responseCode == BillingClient.BillingResponseCode.USER_CANCELED) {
             // 유저 취소

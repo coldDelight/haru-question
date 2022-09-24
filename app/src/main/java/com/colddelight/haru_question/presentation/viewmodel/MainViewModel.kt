@@ -5,6 +5,10 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.android.billingclient.api.BillingClient
+import com.android.billingclient.api.BillingFlowParams
+import com.android.billingclient.api.ConsumeResponseListener
+import com.android.billingclient.api.ProductDetails
 import com.colddelight.data.local.Prefs
 import com.colddelight.domain.model.DomainQuestion
 import com.colddelight.domain.use_case.QuestionUseCase
@@ -32,6 +36,9 @@ class MainViewModel @Inject constructor(
     val current: LiveData<Current>
         get()=_current
 
+    lateinit var billingClient: BillingClient
+    var productDetailsList: List<ProductDetails> = mutableListOf()
+
     data class QuestionState(
         val questionData: DomainQuestion = DomainQuestion("","",""),
         val state: HaruState = HaruState.READY,
@@ -52,6 +59,7 @@ class MainViewModel @Inject constructor(
 //        prefs.lastDate="NO_DATE"
         setHomeTitle()
     }
+
 
     fun changeCurrent(current: Current){
         _current.value = current
@@ -94,8 +102,16 @@ class MainViewModel @Inject constructor(
 
     }
 
-    fun consume(){
+    fun getFlowParams() : BillingFlowParams{
+        Log.e("TAG", "getFlowParams: ${productDetailsList[0]}", )
+        val flowProductDetailParams = BillingFlowParams.ProductDetailsParams.newBuilder()
+            .setProductDetails(productDetailsList[0])
+            .build()
+        val flowParams = BillingFlowParams.newBuilder()
+            .setProductDetailsParamsList(listOf(flowProductDetailParams))
+            .build()
 
+        return flowParams
     }
 
 }

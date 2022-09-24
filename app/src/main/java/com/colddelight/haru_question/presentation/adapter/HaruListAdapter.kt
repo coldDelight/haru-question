@@ -32,7 +32,6 @@ class HaruListAdapter :RecyclerView.Adapter<HaruListAdapter.ViewHolder>() {
             binding.tvListDate.text = item.date
         }
     }
-
     @SuppressLint("NotifyDataSetChanged")
     internal fun setData(newItems: List<DomainReQnA>) {
         this.items = newItems
@@ -45,8 +44,5 @@ class HaruListAdapter :RecyclerView.Adapter<HaruListAdapter.ViewHolder>() {
     override fun getItemCount():Int{
         return items.size
     }
-
-
-
 
 }

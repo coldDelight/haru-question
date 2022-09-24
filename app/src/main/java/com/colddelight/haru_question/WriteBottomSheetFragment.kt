@@ -19,6 +19,7 @@ import com.colddelight.haru_question.presentation.viewmodel.WriteViewModel
 import com.google.android.material.bottomsheet.BottomSheetBehavior
 import com.google.android.material.bottomsheet.BottomSheetDialog
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
+import com.google.android.material.snackbar.Snackbar
 import dagger.hilt.android.AndroidEntryPoint
 import java.text.DecimalFormat
 import java.time.LocalDate
@@ -34,8 +35,8 @@ class WriteBottomSheetFragment : BottomSheetDialogFragment() {
     private val args: WriteBottomSheetFragmentArgs by navArgs()
 
 
-    private fun getBottomSheetDialogDefaultHeight():Int{
-        return getScreenHeight()*90/100
+    private fun getBottomSheetDialogDefaultHeight(): Int {
+        return getScreenHeight() * 90 / 100
     }
 
     override fun onCreateDialog(savedInstanceState: Bundle?): Dialog {
@@ -47,14 +48,16 @@ class WriteBottomSheetFragment : BottomSheetDialogFragment() {
         return dialog
     }
 
-    private fun setupRatio(bottomSheetDialog: BottomSheetDialog){
-    val bottomSheet = bottomSheetDialog.findViewById<View>(com.google.android.material.R.id.design_bottom_sheet) as View
-    val behavior = BottomSheetBehavior.from(bottomSheet)
-    val layoutParams = bottomSheet.layoutParams
-    layoutParams.height = getBottomSheetDialogDefaultHeight()
-    bottomSheet.layoutParams = layoutParams
-    behavior.state = BottomSheetBehavior.STATE_EXPANDED
+    private fun setupRatio(bottomSheetDialog: BottomSheetDialog) {
+        val bottomSheet =
+            bottomSheetDialog.findViewById<View>(com.google.android.material.R.id.design_bottom_sheet) as View
+        val behavior = BottomSheetBehavior.from(bottomSheet)
+        val layoutParams = bottomSheet.layoutParams
+        layoutParams.height = getBottomSheetDialogDefaultHeight()
+        bottomSheet.layoutParams = layoutParams
+        behavior.state = BottomSheetBehavior.STATE_EXPANDED
     }
+
     private fun getScreenHeight(): Int {
         val context = requireContext()
         val wm = context.getSystemService(Context.WINDOW_SERVICE) as WindowManager
@@ -80,7 +83,7 @@ class WriteBottomSheetFragment : BottomSheetDialogFragment() {
         return binding.root
     }
 
-    private fun initText(){
+    private fun initText() {
         val formatter = DateTimeFormatter.ofPattern("yyyy.MM.dd")
         val dateNow = LocalDate.now().format(formatter)
         binding.tvWriteQuestion.text = args.question
@@ -90,25 +93,27 @@ class WriteBottomSheetFragment : BottomSheetDialogFragment() {
         binding.tvQuestionNumber.text = DecimalFormat("000").format(args.questionId)
     }
 
-    private fun textCountSet(){
-        with(binding){
-            etWrite.addTextChangedListener(object :TextWatcher{
-                var text=""
+    private fun textCountSet() {
+        with(binding) {
+            etWrite.addTextChangedListener(object : TextWatcher {
+                var text = ""
                 override fun beforeTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
                     tvWriteCnt.text = "0"
                     text = p0.toString()
                 }
+
                 override fun onTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
                     val totText = etWrite.text.toString()
                     tvWriteCnt.text = totText.length.toString()
-                    if(totText.length>100){
+                    if (totText.length > 100) {
                         etWrite.setText(text)
-                        etWrite.setSelection(totText.length-1)
-                    }else{
+                        etWrite.setSelection(totText.length - 1)
+                    } else {
                         tvWriteCnt.text = totText.length.toString()
                     }
                     binding.btnWrite.isEnabled = totText.isNotEmpty()
                 }
+
                 override fun afterTextChanged(p0: Editable?) {
                 }
             }

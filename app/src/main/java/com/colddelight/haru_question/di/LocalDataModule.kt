@@ -34,17 +34,6 @@ object LocalDataModule {
         return Prefs(application)
     }
 
-//    @Provides
-//    @Singleton
-//    fun providePrefs(prefs: SharedPreferences):Prefs {
-//        return Prefs(prefs)
-//    }
-
-//    @Provides
-//    @Singleton
-//    fun provideSharedPreferences(@ApplicationContext appContext: Context): SharedPreferences{
-//        return appContext.getSharedPreferences(R.string.PREFERENCES_NAME.toString(), Context.MODE_PRIVATE)
-//    }
 }
 
 

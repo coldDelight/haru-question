@@ -171,7 +171,6 @@ class HomeFragment : Fragment(), NavigationView.OnNavigationItemSelectedListener
         })
         return ani
     }
-
     override fun onNavigationItemSelected(item: MenuItem): Boolean {
         when (item.itemId) {
             R.id.item_open_source -> {
@@ -184,7 +183,7 @@ class HomeFragment : Fragment(), NavigationView.OnNavigationItemSelectedListener
                 }
             }
             R.id.item_donate -> {
-
+                val responseCode = mainModel.billingClient.launchBillingFlow(requireActivity(), mainModel.getFlowParams()).responseCode
             }
             R.id.item_react -> {
                 val intent = Intent(Intent.ACTION_VIEW)
@@ -204,11 +203,8 @@ class HomeFragment : Fragment(), NavigationView.OnNavigationItemSelectedListener
                 startActivity(intent)
             }
             else -> {
-
             }
         }
         return true
     }
-
-
 }
