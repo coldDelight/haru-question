@@ -184,6 +184,7 @@ class HomeFragment : Fragment(), NavigationView.OnNavigationItemSelectedListener
                 }
             }
             R.id.item_donate -> {
+
             }
             R.id.item_react -> {
                 val intent = Intent(Intent.ACTION_VIEW)

@@ -105,4 +105,8 @@ dependencies {
     def  billing_version  = "5.0.0"
     implementation("com.android.billingclient:billing:$billing_version")
     implementation("com.android.billingclient:billing-ktx:$billing_version")
+
+    implementation 'org.jetbrains.kotlinx:kotlinx-collections-immutable:0.3.5'
+
+    implementation 'com.google.guava:guava:31.1-android'
 }

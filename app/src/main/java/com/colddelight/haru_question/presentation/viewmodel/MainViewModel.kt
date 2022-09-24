@@ -24,7 +24,6 @@ class MainViewModel @Inject constructor(
     private val UseCase: QuestionUseCase,
     private val prefs: Prefs
 ):ViewModel(){
-
     //splash 상태
     private val _isLoading = MutableStateFlow(true)
     val isLoading = _isLoading.asStateFlow()
@@ -32,10 +31,6 @@ class MainViewModel @Inject constructor(
     private val _current = MutableLiveData(Current.HOME)
     val current: LiveData<Current>
         get()=_current
-
-     fun changeCurrent(current: Current){
-        _current.value = current
-    }
 
     data class QuestionState(
         val questionData: DomainQuestion = DomainQuestion("","",""),
@@ -56,6 +51,10 @@ class MainViewModel @Inject constructor(
 //        prefs.lastDate="2022.09.10"
 //        prefs.lastDate="NO_DATE"
         setHomeTitle()
+    }
+
+    fun changeCurrent(current: Current){
+        _current.value = current
     }
     private fun setHomeTitle(){
         val formatter = DateTimeFormatter.ofPattern("yyyy.MM.dd")
@@ -92,6 +91,10 @@ class MainViewModel @Inject constructor(
             state = HaruState.WAIT,
             questionData = DomainQuestion("","",""),
         )
+
+    }
+
+    fun consume(){
 
     }
 
