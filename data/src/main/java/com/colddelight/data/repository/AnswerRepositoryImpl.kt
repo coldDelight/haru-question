@@ -11,8 +11,8 @@ class AnswerRepositoryImpl(
         val data = AnswerEntity(question.answer,question.date,question.q_id )
         dao.insetAnswer(data)
     }
-    override suspend fun delAnswer(id: Int) {
-        dao.delAnswer(id)
+    override suspend fun delAnswer() {
+        dao.delAnswer()
     }
     override suspend fun getAnswer(id: Int): DomainAnswer {
         return dao.getAnswer(id).toDomainAnswer()
@@ -20,4 +20,6 @@ class AnswerRepositoryImpl(
     override suspend fun getAllAnswer(): List<DomainAnswer> {
         return dao.getAllAnswer().map { it.toDomainAnswer() }
     }
+
+
 }

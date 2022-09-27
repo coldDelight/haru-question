@@ -9,6 +9,7 @@ import android.graphics.Rect
 import android.net.Uri
 import android.os.*
 import android.provider.MediaStore
+import android.text.method.ScrollingMovementMethod
 import android.view.LayoutInflater
 import android.view.PixelCopy
 import android.view.View
@@ -52,6 +53,7 @@ class ListDetailFragment : Fragment() {
         viewLifecycleOwner.lifecycleScope.launchWhenStarted {
             model.getQna(args.id,args.aId)
         }
+        binding.tvDetailAnswer.movementMethod = ScrollingMovementMethod()
         return binding.root
     }
 

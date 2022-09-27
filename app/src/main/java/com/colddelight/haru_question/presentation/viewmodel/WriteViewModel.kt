@@ -30,7 +30,6 @@ class WriteViewModel @Inject constructor(
                     prefs.questionId = q_id+1
                 }else{
                     prefs.questionId = 1
-
                 }
             }
         }

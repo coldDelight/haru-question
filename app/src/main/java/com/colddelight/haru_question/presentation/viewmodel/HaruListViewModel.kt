@@ -1,5 +1,6 @@
 package com.colddelight.haru_question.presentation.viewmodel
 
+import android.util.Log
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
@@ -19,6 +20,7 @@ class HaruListViewModel @Inject constructor(
         get() = _itemList
     init {
         viewModelScope.launch(Dispatchers.IO) {
+            Log.e("TAG", "${UseCase.getAllQnA()}: ", )
             _itemList.postValue(UseCase.getAllQnA())
         }
     }

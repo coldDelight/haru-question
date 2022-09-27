@@ -14,4 +14,6 @@ interface QnADao {
     @Transaction
     @Query("SELECT * FROM question ORDER BY id DESC")
     suspend fun getAllQnA():List<QnA>
+
+
 }

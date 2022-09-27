@@ -12,8 +12,8 @@ class AnswerUseCase(private val repository: AnswerRepository) {
         repository.addAnswer(answer)
         return answer
     }
-    suspend fun delAnswer(id: Int){
-        return repository.delAnswer(id)
+    suspend fun delAnswer(){
+        return repository.delAnswer()
     }
     suspend fun getAllAnswer():List<DomainAnswer>{
         return repository.getAllAnswer()

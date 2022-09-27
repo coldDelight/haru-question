@@ -25,7 +25,7 @@ import com.colddelight.data.R
         }
 
     var maxNumber:Int
-        get() = prefs.getInt(R.string.MAX_NUMBER_KEY.toString(), 2)
+        get() = prefs.getInt(R.string.MAX_NUMBER_KEY.toString(), 29)
 
         @Synchronized
         set(value:Int){

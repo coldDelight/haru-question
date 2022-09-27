@@ -6,5 +6,5 @@ interface AnswerRepository {
     suspend fun getAnswer(id:Int): DomainAnswer
     suspend fun getAllAnswer() : List<DomainAnswer>
     suspend fun addAnswer(question: DomainAnswer)
-    suspend fun delAnswer(id:Int)
+    suspend fun delAnswer()
 }

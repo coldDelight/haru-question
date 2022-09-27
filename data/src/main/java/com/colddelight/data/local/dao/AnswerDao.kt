@@ -18,6 +18,6 @@ interface AnswerDao {
     @Query("SELECT * FROM answer")
     suspend fun getAllAnswer():List<AnswerEntity>
 
-    @Query("DELETE FROM  answer WHERE id = :id")
-    fun delAnswer(id: Int)
+    @Query("DELETE FROM answer")
+    fun delAnswer()
 }

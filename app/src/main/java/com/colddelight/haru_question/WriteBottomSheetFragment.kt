@@ -3,8 +3,8 @@ package com.colddelight.haru_question
 import android.app.Activity
 import android.app.Dialog
 import android.content.Context
-import android.os.Build
-import android.os.Bundle
+import android.content.res.Resources
+import android.os.*
 import android.text.Editable
 import android.text.TextWatcher
 import android.util.DisplayMetrics
@@ -127,6 +127,19 @@ class WriteBottomSheetFragment : BottomSheetDialogFragment() {
         binding.btnWrite.setOnClickListener {
             val text = binding.etWrite.text.toString()
             model.onSubmit(text)
+            val vib = if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.S) {
+                val vibratorManager =
+                    requireActivity().getSystemService(Context.VIBRATOR_MANAGER_SERVICE) as VibratorManager
+                vibratorManager.defaultVibrator
+
+            } else {
+                @Suppress("DEPRECATION")
+                requireActivity().getSystemService(Context.VIBRATOR_SERVICE) as Vibrator
+            }
+            vib.vibrate(VibrationEffect.createOneShot(300,50))
+
+
+
             mainModel.answerQuestion()
             findNavController().popBackStack()
         }

@@ -119,6 +119,7 @@ class HomeFragment : Fragment(), NavigationView.OnNavigationItemSelectedListener
         binding.btnToList.setOnClickListener {
             mainModel.changeCurrent(Current.ELSE)
             findNavController().navigate(R.id.action_homeFragment_to_haruListFragment)
+//            mainModel.testFun()
         }
         binding.btnToWorry.setOnClickListener {
             mainModel.changeCurrent(Current.ELSE)
@@ -178,7 +179,7 @@ class HomeFragment : Fragment(), NavigationView.OnNavigationItemSelectedListener
                     requireActivity().applicationContext,
                     OssLicensesMenuActivity::class.java
                 ).also { it2 ->
-                    OssLicensesMenuActivity.setActivityTitle("오픈소스 라이선스")
+                    OssLicensesMenuActivity.setActivityTitle("오픈소스 라이센스")
                     startActivity(it2)
                 }
             }

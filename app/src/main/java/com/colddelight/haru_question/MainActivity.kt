@@ -1,5 +1,7 @@
 package com.colddelight.haru_question
 
+import android.content.pm.ActivityInfo
+import android.media.MediaPlayer
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
@@ -19,20 +21,44 @@ class MainActivity : AppCompatActivity(), PurchasesUpdatedListener{
     private var backPressed = 0L
     private val mainModel : MainViewModel by viewModels()
     private lateinit var consumeListener : ConsumeResponseListener
+    private lateinit var mediaPlayer:MediaPlayer
+    private var bgmTime=0
+
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        requestedOrientation = ActivityInfo.SCREEN_ORIENTATION_PORTRAIT
 
         initBilling()
         connectBilling()
         setConsumeListener()
 
+//        setBgm()
         installSplashScreen().apply {
             setKeepOnScreenCondition{
                 mainModel.isLoading.value
             }
         }
         setContentView(R.layout.activity_main)
+        playBgm()
+
+    }
+
+    override fun onRestart() {
+        super.onRestart()
+        playBgm()
+    }
+
+    override fun onStop() {
+        super.onStop()
+        mediaPlayer.stop()
+    }
+
+    private fun playBgm(){
+        mediaPlayer = MediaPlayer.create(this, R.raw.bgm)
+        mediaPlayer.isLooping=true
+        mediaPlayer.start()
     }
 
     //빌링 초기화

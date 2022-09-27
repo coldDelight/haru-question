@@ -1,8 +1,9 @@
 package com.colddelight.haru_question
 
 import android.animation.Animator
+import android.content.Context
 import android.graphics.Typeface
-import android.os.Bundle
+import android.os.*
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -49,6 +50,16 @@ class HaruWorryFragment : Fragment() {
     private fun setOnClicks(){
         binding.lottieRefresh.setOnClickListener {
             binding.lottieRefresh.visibility=View.VISIBLE
+            val vib = if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.S) {
+                val vibratorManager =
+                    requireActivity().getSystemService(Context.VIBRATOR_MANAGER_SERVICE) as VibratorManager
+                vibratorManager.defaultVibrator
+
+            } else {
+                @Suppress("DEPRECATION")
+                requireActivity().getSystemService(Context.VIBRATOR_SERVICE) as Vibrator
+            }
+            vib.vibrate(VibrationEffect.createOneShot(300,50))
             binding.lottieRefresh.playAnimation()
             binding.clWorry.startAnimation(AnimationUtils.loadAnimation(requireContext(),R.anim.fade_in_short))
             model.getText()

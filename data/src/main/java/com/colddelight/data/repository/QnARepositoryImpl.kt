@@ -39,4 +39,6 @@ class QnARepositoryImpl(private val dao: QnADao
         }
         return resList
     }
+
+
 }

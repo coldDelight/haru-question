@@ -2,6 +2,8 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     package="com.colddelight.haru_question">
+
+    <uses-permission android:name="android.permission.VIBRATE" />
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
     <uses-permission android:name="com.android.vending.BILLING" />
 
@@ -25,6 +27,14 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
+        <activity
+            android:name="com.google.android.gms.oss.licenses.OssLicensesMenuActivity"
+            android:theme="@style/Theme.OpensourceLicense"/>
+
+        <activity
+            android:name="com.google.android.gms.oss.licenses.OssLicensesActivity"
+            android:theme="@style/Theme.OpensourceLicense" />
 
         <provider
             android:name="androidx.core.content.FileProvider"

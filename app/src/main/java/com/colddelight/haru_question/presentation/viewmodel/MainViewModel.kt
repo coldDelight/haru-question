@@ -10,7 +10,9 @@ import com.android.billingclient.api.BillingFlowParams
 import com.android.billingclient.api.ConsumeResponseListener
 import com.android.billingclient.api.ProductDetails
 import com.colddelight.data.local.Prefs
+import com.colddelight.domain.model.DomainAnswer
 import com.colddelight.domain.model.DomainQuestion
+import com.colddelight.domain.use_case.AnswerUseCase
 import com.colddelight.domain.use_case.QuestionUseCase
 import com.colddelight.haru_question.core.util.Current
 import com.colddelight.haru_question.core.util.HaruState
@@ -26,6 +28,7 @@ import javax.inject.Inject
 @HiltViewModel
 class MainViewModel @Inject constructor(
     private val UseCase: QuestionUseCase,
+    private val answerUseCase: AnswerUseCase,
     private val prefs: Prefs
 ):ViewModel(){
     //splash 상태
@@ -49,16 +52,18 @@ class MainViewModel @Inject constructor(
 
     init{
         viewModelScope.launch {
+
             delay(1500)
             _isLoading.value=false
         }
-        //TODO 임시 데이터 삭제
-//        prefs.isChecked=true
-//        prefs.questionId=2
-//        prefs.lastDate="2022.09.10"
-//        prefs.lastDate="NO_DATE"
+//        viewModelScope.launch(Dispatchers.IO) {
+//            answerUseCase.delAnswer()
+//
+//        }
+
         setHomeTitle()
     }
+
 
 
     fun changeCurrent(current: Current){
@@ -79,6 +84,22 @@ class MainViewModel @Inject constructor(
             )
         }
     }
+//    fun testFun(){
+//        Log.e("TAG", "testFun이전: ${prefs.questionId}", )
+//        val formatter = DateTimeFormatter.ofPattern("yyyy.MM.dd")
+//        val dateNow = LocalDate.now().format(formatter)
+//        val q_id = prefs.questionId
+////        prefs.lastDate = dateNow
+//        prefs.isChecked = true
+//        if(q_id< prefs.maxNumber){
+//            prefs.questionId = q_id+1
+//        }else{
+//            prefs.questionId = 1
+//        }
+//        Log.e("TAG", "testFun이후: ${prefs.questionId}", )
+//        setHomeTitle()
+//    }
+
 
     fun checkQuestion(){
         prefs.isChecked=true
@@ -103,7 +124,6 @@ class MainViewModel @Inject constructor(
     }
 
     fun getFlowParams() : BillingFlowParams{
-        Log.e("TAG", "getFlowParams: ${productDetailsList[0]}", )
         val flowProductDetailParams = BillingFlowParams.ProductDetailsParams.newBuilder()
             .setProductDetails(productDetailsList[0])
             .build()
@@ -113,5 +133,4 @@ class MainViewModel @Inject constructor(
 
         return flowParams
     }
-
 }

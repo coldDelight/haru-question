@@ -3,19 +3,19 @@
 
     <item
         android:id="@+id/item_react"
-        android:title="앱 평가하기" />
+        android:title="😀 앱 평가하기" />
     <item
         android:id="@+id/item_donate"
-        android:title="후원하기" />
+        android:title="🧐 후원하기" />
     <item
         android:id="@+id/item_version"
-        android:title="앱 버전 - v 1.0.0" />
+        android:title="📱 앱 버전 - v 1.0.0" />
     <item
         android:id="@+id/item_open_source"
-        android:title="오픈소스 라이센스" />
+        android:title="📜 오픈소스 라이센스" />
     <item
         android:id="@+id/item_ask"
-        android:title="문의하기" />
+        android:title="📫 문의하기" />
     <item
         android:id="@+id/item_reset"
         android:title="초기화"
