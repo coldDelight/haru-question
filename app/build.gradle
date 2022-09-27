@@ -79,7 +79,6 @@ dependencies {
     kapt "com.google.dagger:hilt-android-compiler:2.40.5"
     implementation "androidx.hilt:hilt-lifecycle-viewmodel:1.0.0-alpha03"
     kapt "androidx.hilt:hilt-compiler:1.0.0"
-    implementation 'androidx.hilt:hilt-navigation-compose:1.0.0'
 
     // Room
     implementation "androidx.room:room-runtime:2.4.3"
@@ -93,9 +92,6 @@ dependencies {
 
     //Balloon
     implementation "com.github.skydoves:balloon:1.4.7"
-    //data store
-    implementation "androidx.datastore:datastore-preferences:1.0.0"
-    implementation "androidx.datastore:datastore-preferences-core:1.0.0"
 
     //oss
     implementation 'com.google.android.gms:play-services-oss-licenses:17.0.0'

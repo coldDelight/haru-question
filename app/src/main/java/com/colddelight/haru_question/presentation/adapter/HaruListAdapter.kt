@@ -4,7 +4,6 @@ import android.annotation.SuppressLint
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
-import com.colddelight.domain.model.DomainQnA
 import com.colddelight.domain.model.DomainReQnA
 import com.colddelight.haru_question.databinding.ItemRecyclerListBinding
 import java.text.DecimalFormat

@@ -16,7 +16,6 @@ import android.view.View
 import android.view.ViewGroup
 import android.view.animation.Animation
 import android.view.animation.AnimationUtils
-import android.widget.Toast
 import androidx.annotation.RequiresApi
 import androidx.core.app.ActivityCompat
 import androidx.core.content.FileProvider
@@ -25,7 +24,6 @@ import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
-import com.colddelight.haru_question.core.util.Current
 import com.colddelight.haru_question.databinding.FragmentListDetailBinding
 import com.colddelight.haru_question.presentation.viewmodel.ListDetailViewModel
 import dagger.hilt.android.AndroidEntryPoint

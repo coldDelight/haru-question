@@ -1,9 +1,7 @@
 package com.colddelight.haru_question
 
-import android.app.Activity
 import android.app.Dialog
 import android.content.Context
-import android.content.res.Resources
 import android.os.*
 import android.text.Editable
 import android.text.TextWatcher
@@ -19,7 +17,6 @@ import com.colddelight.haru_question.presentation.viewmodel.WriteViewModel
 import com.google.android.material.bottomsheet.BottomSheetBehavior
 import com.google.android.material.bottomsheet.BottomSheetDialog
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
-import com.google.android.material.snackbar.Snackbar
 import dagger.hilt.android.AndroidEntryPoint
 import java.text.DecimalFormat
 import java.time.LocalDate

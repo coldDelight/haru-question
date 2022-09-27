@@ -3,13 +3,13 @@ package com.colddelight.haru_question
 import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.MenuItem
 import android.view.View
 import android.view.ViewGroup
 import android.view.animation.Animation
 import android.view.animation.AnimationUtils
+import android.widget.Toast
 import androidx.core.view.GravityCompat
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
@@ -184,24 +184,35 @@ class HomeFragment : Fragment(), NavigationView.OnNavigationItemSelectedListener
                 }
             }
             R.id.item_donate -> {
-                val responseCode = mainModel.billingClient.launchBillingFlow(requireActivity(), mainModel.getFlowParams()).responseCode
+                try {
+                    val responseCode = mainModel.billingClient.launchBillingFlow(requireActivity(), mainModel.getFlowParams()).responseCode
+                }catch (e:Exception){
+                    Toast.makeText(requireContext(),"후원 불가능 기기입니다",1000).show()
+                }
             }
             R.id.item_react -> {
-                val intent = Intent(Intent.ACTION_VIEW)
-                val packageName = requireContext().packageName
-                intent.data = Uri.parse("market://details?id=" + packageName)
-                startActivity(intent)
-
+                try {
+                    val intent = Intent(Intent.ACTION_VIEW)
+                    val packageName = requireContext().packageName
+                    intent.data = Uri.parse("market://details?id=" + packageName)
+                    startActivity(intent)
+                }catch (e:Exception){
+                    Toast.makeText(requireContext(),"반응 가능한 에플리케이션이 없습니다",1000).show()
+                }
             }
             R.id.item_ask->{
-                val intent = Intent(Intent.ACTION_SEND)
-                intent.type = "plain/Text"
-                intent.putExtra(Intent.EXTRA_SUBJECT, "HARU Q 문의")
-                intent.putExtra(Intent.EXTRA_TEXT, "HARU Q 문의")
-                intent.putExtra(Intent.EXTRA_EMAIL, arrayOf("hno05039@naver.com"))
-                intent.setPackage("com.google.android.gm");
-                intent.type = "message/rfc822"
-                startActivity(intent)
+                try {
+                    val intent = Intent(Intent.ACTION_SEND)
+                    intent.type = "plain/Text"
+                    intent.putExtra(Intent.EXTRA_SUBJECT, "HARU Q 문의")
+                    intent.putExtra(Intent.EXTRA_TEXT, "HARU Q 문의")
+                    intent.putExtra(Intent.EXTRA_EMAIL, arrayOf("hno05039@naver.com"))
+                    intent.setPackage("com.google.android.gm");
+                    intent.type = "message/rfc822"
+                    startActivity(intent)
+                }catch (e:Exception){
+                    Toast.makeText(requireContext(),"문의 가능한 에플리케이션이 없습니다",1000).show()
+                }
             }
             else -> {
             }

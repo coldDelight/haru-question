@@ -75,6 +75,7 @@ class MainViewModel @Inject constructor(
         if(dateNow.equals(prefs.lastDate)){
             _state.value = QuestionState(
                 state= HaruState.WAIT
+
             )
         }else if(prefs.isChecked){
             setQuestion()
@@ -84,28 +85,10 @@ class MainViewModel @Inject constructor(
             )
         }
     }
-//    fun testFun(){
-//        Log.e("TAG", "testFun이전: ${prefs.questionId}", )
-//        val formatter = DateTimeFormatter.ofPattern("yyyy.MM.dd")
-//        val dateNow = LocalDate.now().format(formatter)
-//        val q_id = prefs.questionId
-////        prefs.lastDate = dateNow
-//        prefs.isChecked = true
-//        if(q_id< prefs.maxNumber){
-//            prefs.questionId = q_id+1
-//        }else{
-//            prefs.questionId = 1
-//        }
-//        Log.e("TAG", "testFun이후: ${prefs.questionId}", )
-//        setHomeTitle()
-//    }
-
-
     fun checkQuestion(){
         prefs.isChecked=true
         setQuestion()
     }
-
     private fun setQuestion(){
         viewModelScope.launch(Dispatchers.IO) {
             _state.value = QuestionState(
@@ -114,7 +97,6 @@ class MainViewModel @Inject constructor(
             )
         }
     }
-
     fun answerQuestion(){
         _state.value = QuestionState(
             state = HaruState.WAIT,
@@ -122,7 +104,6 @@ class MainViewModel @Inject constructor(
         )
 
     }
-
     fun getFlowParams() : BillingFlowParams{
         val flowProductDetailParams = BillingFlowParams.ProductDetailsParams.newBuilder()
             .setProductDetails(productDetailsList[0])
